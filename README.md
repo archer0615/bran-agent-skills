@@ -43,6 +43,8 @@ cd /path/to/bran-agent-skills
 - 實作完成後：`implementation-validator`
 - 交付前審查：`quality-gate`
 
+已納入的 Playbook 能力：`sop-generator`、`knowledge-base-organizing`、`option-comparison`、`project-tracking`、`human-review-workflow`、`scenario-planning`、`context-management`、`prompt-evaluation`、`ai-governance`。
+
 ## 安裝後設定
 
 ### Codex 全域「自訂指令」
