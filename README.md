@@ -43,6 +43,54 @@ cd /path/to/bran-agent-skills
 - 實作完成後：`implementation-validator`
 - 交付前審查：`quality-gate`
 
+## 安裝後設定
+
+### Codex 全域「自訂指令」
+
+在 Codex 設定的自訂指令欄位，貼上以下內容。這些規則適用於所有專案：
+
+```text
+請以繁體中文與我溝通，包括提問、進度說明、驗證結果與最終回覆。
+
+請根據目前專案、AGENTS.md、對話內容與可用 Skills，自動選擇最適合的 Skill，不要求我手動指定。
+
+如果指令已經清楚，保留原意並直接執行；只有在缺少重要條件、限制或驗收標準時，才先進行需求釐清與指令優化。
+
+修改前先檢查現有程式碼、測試、設定與文件，只做完成任務所需的最小修改。
+
+修改完成後執行適當驗證，不得聲稱未實際執行的命令成功。除非我明確要求，不要自行 commit、push、merge、deploy 或 release。
+```
+
+### 各專案的 `AGENTS.md`
+
+只有專案有特殊規則時才需要建立。請在專案根目錄新增 `AGENTS.md`，貼上以下範本，再依專案實際內容修改：
+
+```markdown
+# Project instructions
+
+## Language
+
+- 使用繁體中文回覆。
+- 程式碼、變數名稱與 commit message 使用英文。
+
+## Technology
+
+- 使用本專案既有的套件管理工具與技術棧。
+- 優先沿用現有 component、utility 與架構。
+
+## Workflow
+
+- 修改前先閱讀 README、相關程式碼與測試。
+- 修改後執行本專案指定的測試與 build。
+
+## Safety
+
+- 不要提交 secrets 或修改 `.env`。
+- 未經要求不要 deploy、push 或修改 production data。
+```
+
+全域自訂指令負責共通工作方式；專案 `AGENTS.md` 只負責該專案的技術棧、測試指令與特殊限制。不需要把所有 Skills 或完整 System Prompt 複製到每個專案。
+
 ## 驗證
 
 ```powershell
