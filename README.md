@@ -105,6 +105,22 @@ Skills 檔案維持英文，方便跨環境維護；Codex 對使用者的提問�
 
 完整的目前狀態、換電腦安裝步驟、Codex 自訂指令、專案 `AGENTS.md` 說明與下一步，請閱讀 [`references/continuation-handoff.md`](references/continuation-handoff.md)。
 
+### 新電腦／新對話延續指令
+
+換電腦或開啟新的 Codex 對話時，直接貼上以下內容：
+
+```text
+請閱讀 Repository 內的 references/continuation-handoff.md，接續目前 bran-agent-skills 的開發。
+先檢查 git status、AGENTS.md、README.md 與目前 Skills 狀態，再依「下一步優先順序」繼續工作。
+所有回覆使用繁體中文，並遵守 Repository 內的 AGENTS.md。
+```
+
+如果尚未取得 Repository，先執行：
+
+```text
+請先從 https://github.com/archer0615/bran-agent-skills 取得 Repository，閱讀 references/continuation-handoff.md，然後依文件完成安裝與狀態確認，再繼續目前工作。
+```
+
 ## 專案 AGENTS.md
 
 每個專案的 `AGENTS.md` 只放該專案自己的規則，例如技術棧、測試指令、命名方式與禁止事項。不需要複製全部 Skills 或全域 System Prompt。
