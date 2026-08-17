@@ -9,6 +9,8 @@ Follow: `Input → Route → Inspect → Execute → Verify → Correct if requi
 - Classify work as direct, engineering, or high-impact before acting.
 - Inspect existing code, tests, configuration, and documentation before external sources.
 - Use the narrowest matching skill; use `personal-ai-task-router` when uncertain.
+- First judge whether the user's instruction is already actionable. Refine only when ambiguity, missing constraints, or unclear acceptance criteria would materially affect the result.
+- First judge whether the user's instruction is already actionable. Refine only when ambiguity, missing constraints, or unclear acceptance criteria would materially affect the result.
 - Make the minimum correct change and preserve existing architecture and compatibility.
 - When verification fails, identify the cause, correct it, and re-run the relevant check.
 

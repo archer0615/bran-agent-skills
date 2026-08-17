@@ -50,3 +50,52 @@ cd /path/to/bran-agent-skills
 ```
 
 Skills 檔案維持英文，方便跨環境維護；Codex 對使用者的提問、說明、驗證結果與最終回覆，預設使用繁體中文。
+
+## 專案 AGENTS.md
+
+每個專案的 `AGENTS.md` 只放該專案自己的規則，例如技術棧、測試指令、命名方式與禁止事項。不需要複製全部 Skills 或全域 System Prompt。
+
+內容來源依序為：
+
+1. 專案現有文件與設定，例如 README、package.json、Build 與測試設定
+2. 實際程式碼與測試
+3. 你對該專案的特殊要求
+4. 本 Repository 的通用工程規範
+
+可從以下範本開始：
+
+```markdown
+# Project instructions
+
+## Language
+
+- 使用繁體中文回覆。
+- 程式碼、變數名稱與 commit message 使用英文。
+
+## Technology
+
+- 使用既有專案指定的套件管理工具。
+- 優先沿用現有 component、utility 與架構。
+
+## Workflow
+
+- 修改前先閱讀 README、相關程式碼與測試。
+- 修改後執行專案指定的測試與 build。
+
+## Safety
+
+- 不要提交 secrets 或修改 `.env`。
+- 未經要求不要 deploy、push 或修改 production data。
+```
+
+若專案沒有特殊規則，可以不建立 `AGENTS.md`。
+
+## 指令優化判斷
+
+Codex 會先判斷指令是否已經可以直接執行：
+
+- 指令清楚：保留原意，直接執行，不過度改寫。
+- 缺少重要條件或驗收標準：使用 `requirement-refinement` 協助釐清。
+- 不確定要走哪個能力：使用 `personal-ai-task-router`。
+
+這樣可以兼顧自動優化與最低必要修改，避免每個簡單請求都被改寫成冗長 Prompt。
