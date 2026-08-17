@@ -9,14 +9,28 @@ Personal AI capability source of truth for Codex: task routing, prompt managemen
 - `references/` — authoring guidance
 - `scripts/` — repository validation utilities
 
-## Install
+## Install once
 
-Windows: `./bootstrap/setup.ps1 -Categories core,coding,research,knowledge,composite`
+Windows PowerShell:
 
-macOS/Linux: `./bootstrap/setup.sh core coding research knowledge composite`
+```powershell
+.\bootstrap\setup.ps1
+```
 
-Both installers create links into the Codex skills directory and never replace an existing non-link directory.
+macOS/Linux:
 
-## Validate
+```sh
+./bootstrap/setup.sh core coding research knowledge composite
+```
 
-Run `./scripts/validate-skills.ps1` from PowerShell.
+Restart Codex after installation. Existing non-link folders are left untouched.
+
+## Use
+
+Just describe the task. Codex selects the matching skill automatically. You may also name one directly, for example: `請使用 quality-gate 審查這次修改。`
+
+To verify the library on Windows:
+
+```powershell
+.\scripts\validate-skills.ps1
+```
