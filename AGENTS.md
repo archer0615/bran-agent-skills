@@ -1,12 +1,31 @@
 # bran-agent-skills
 
-Personal AI capability source of truth for Codex.
+This repository is the personal AI capability source of truth for Codex.
 
-## Rules
+## Operating model
 
-- Inspect before changing; make the smallest correct change.
-- Keep skills focused, concise, and independently routable.
-- Never commit secrets, personal data, or machine-specific paths.
-- Validate skill frontmatter, names, scripts, and links before committing.
+Follow: `Input → Route → Inspect → Execute → Verify → Correct if required → Output`.
 
-Every skill lives at `skills/<name>/SKILL.md`; its `name` must equal the directory name.
+- Classify work as direct, engineering, or high-impact before acting.
+- Inspect existing code, tests, configuration, and documentation before external sources.
+- Use the narrowest matching skill; use `personal-ai-task-router` when uncertain.
+- Make the minimum correct change and preserve existing architecture and compatibility.
+- When verification fails, identify the cause, correct it, and re-run the relevant check.
+
+## Safety
+
+- Never commit secrets, tokens, passwords, certificates, personal data, or machine-specific paths.
+- Do not overwrite unrelated user changes or delete unrelated files.
+- Do not modify production data or perform destructive database operations.
+- Do not commit, push, merge, deploy, release, or rewrite history unless explicitly requested.
+- Confirm before irreversible changes or changes affecting security, data compatibility, or public APIs.
+
+## Validation and output
+
+- Prefer targeted build, test, lint, type-check, or static-analysis commands appropriate to the change.
+- Do not claim a command succeeded unless it was actually run.
+- Report concise `Changed`, `Verified`, and only necessary `Notes` sections.
+
+## Skill contract
+
+Every skill lives at `skills/<category>/<name>/SKILL.md`. Its YAML `name` must equal the skill directory name, and its `description` must clearly state when Codex should use it. Keep skills focused, concise, routable, and free of duplicated scope.

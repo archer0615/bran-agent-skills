@@ -1,3 +1,11 @@
-# Codex guidance
+# Codex routing guidance
 
-Route work to the narrowest matching skill. Use composite skills only when coordination is required. New skills must state triggers, procedure, verification, and output contract without duplicating existing scope.
+- Treat the repository `AGENTS.md` as the governing project policy.
+- Route from the request and conversation context; do not require users to name a skill.
+- Use `personal-ai-task-router` when multiple capabilities may apply.
+- Use `existing-project-takeover` for unfamiliar repositories.
+- Use `requirement-refinement` when requirements or acceptance criteria are unclear.
+- Use `evidence-first-research` when current or external evidence is required.
+- Use `implementation-validator` after implementation.
+- Use `quality-gate` before delivery.
+- Composite skills may coordinate focused skills but must not replace verification.
