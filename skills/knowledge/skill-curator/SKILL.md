@@ -5,13 +5,27 @@ description: Use to review, deduplicate, and maintain a skill library.
 
 # Skill Curator
 
+## Use when
+
+Use this skill to review, deduplicate, classify, improve, retire, or maintain a skill library.
+
 ## Procedure
 
-1. Inspect the request and relevant context.
-2. Produce the smallest useful result using existing conventions.
-3. Verify against acceptance criteria and report limitations.
+1. Inventory skill names, descriptions, categories, triggers, procedures, outputs, dependencies, and validation status.
+2. Check each skill for narrow scope, actionable instructions, clear routing, consistent structure, and overlap with other skills.
+3. Identify duplicates, gaps, stale references, overly broad skills, weak triggers, and inconsistent terminology.
+4. Recommend the smallest change: clarify, split, merge, relocate, deprecate, or create only when the gap is real.
+5. Apply approved maintenance changes while preserving compatibility and repository conventions.
+6. Run structural and targeted content validation, then report unresolved overlap or future candidates.
+
+## Verification
+
+- Every skill has valid metadata and a specific trigger.
+- Each skill has a distinct purpose or documented relationship to related skills.
+- Procedures, verification, and outputs are actionable and internally consistent.
+- Validation covers the final library state and no unsupported capability is claimed.
 
 ## Output
 
-Return the result, changed files when applicable, and concrete verification evidence.
+Return the library inventory, findings, change recommendations or updates, overlap decisions, validation evidence, and remaining gaps.
 

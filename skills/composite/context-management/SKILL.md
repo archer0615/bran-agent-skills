@@ -5,9 +5,24 @@ description: Use when a task has a long conversation, many files, competing inst
 
 # Context Management
 
+## Use when
+
+Use this skill when a task has a long conversation, many files, competing instructions, handoffs, or a meaningful risk of losing decisions and evidence.
+
 ## Procedure
 
-Maintain compact task state with objective, constraints, decisions, open questions, evidence, files, and next action. Prefer repository evidence, summarize before context grows, and reconcile conflicts by authority and recency.
+1. Maintain compact task state with objective, scope, constraints, decisions, open questions, evidence, files, current status, and next action.
+2. Prefer authoritative and recent evidence. Record where each important fact came from and distinguish user instructions, repository rules, observed state, assumptions, and recommendations.
+3. Summarize before context grows: preserve decisions and unresolved items, remove repetition, and keep exact paths or commands needed to resume work.
+4. Reconcile conflicts by authority and recency. Do not silently discard a higher-priority instruction or a newer verified state.
+5. At handoff, provide the current objective, completed work, remaining work, blockers, changed files, verification evidence, and the first safe next action.
+
+## Verification
+
+- Another agent can identify the current objective and next action without rereading the full conversation.
+- Decisions, assumptions, evidence, and open questions are clearly separated.
+- File paths and verification results match the repository state.
+- No secret, personal data, or unnecessary transcript content is retained.
 
 ## Output
 

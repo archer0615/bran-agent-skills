@@ -5,11 +5,27 @@ description: Use when designing a safe human review step for AI-generated or aut
 
 # Human Review Workflow
 
+## Use when
+
+Use this skill when AI-generated or automated output needs a defined human approval, correction, escalation, or rollback step before acceptance or action.
+
 ## Procedure
 
-Define output, reviewer role, criteria, escalation thresholds, evidence, correction path, audit trail, and completion state. Require approval for high-impact or irreversible actions and include rollback handling.
+1. Define the output, affected parties, action boundary, reviewer role, authority, and completion state.
+2. Set review criteria, required evidence, confidence or uncertainty thresholds, and explicit escalation conditions.
+3. Specify how the reviewer inspects, approves, rejects, requests correction, or delegates the decision.
+4. Require approval before high-impact, external, irreversible, or security-sensitive actions.
+5. Record the decision, reviewer, evidence, timestamp, corrections, exceptions, and audit trail without retaining unnecessary sensitive data.
+6. Define rollback, incident handling, and re-review when output or context changes.
+
+## Verification
+
+- Reviewer authority and acceptance criteria are unambiguous.
+- High-impact and irreversible actions cannot bypass approval.
+- Rejection, correction, escalation, audit, and rollback paths are testable.
+- Completion requires evidence of the required review.
 
 ## Output
 
-Return the structured artifact, assumptions, unresolved questions, and concrete verification or review criteria. Communicate with the user in Traditional Chinese unless another language is requested.
+Return the workflow, roles, criteria, escalation thresholds, evidence record, rollback path, assumptions, unresolved questions, and verification criteria. Communicate with the user in Traditional Chinese unless another language is requested.
 

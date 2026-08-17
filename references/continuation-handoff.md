@@ -27,6 +27,8 @@
 - Skills 內容以英文維護，對使用者回覆規則為繁體中文
 - Windows 安裝腳本會在無法建立 symbolic link 時使用 junction
 - 重複執行安裝不會刪除實際 Skill 內容，也不應再跳出刪除確認
+- 23 個 Skills 的正文已完成第一輪補強，包含觸發條件、流程、決策規則、驗證與輸出格式
+- 最新驗證結果：`Validated 23 skills.`
 
 ## 三、目前 Skills
 
@@ -134,9 +136,9 @@ Windows PowerShell：
 
 ## 七、目前已知狀態與限制
 
-- 23 個 Skills 已完成 frontmatter 驗證，但部分早期 Skills 的正文仍偏精簡。
-- 下一階段應逐一補強 Skill 的觸發條件、輸入、決策規則、輸出格式、例外與驗證。
-- 優先補強：`personal-ai-task-router`、`closed-loop-task-solver`、`requirement-refinement`、`existing-project-takeover`、`implementation-validator`、`quality-gate`。
+- 23 個 Skills 已完成 frontmatter 驗證與第一輪正文補強。
+- 下一階段應進行跨 Skill 一致性審查、重複能力檢查、README／交接文件同步，以及必要的實例測試。
+- 目前所有修改尚未 commit；依專案規則，不應自行 commit 或 push。
 - 不要一次大量複製外部 Playbook Skills；先確認是否與現有能力重複。
 - 不要把 Token、密碼、API Key、個資或機器專屬路徑寫入 Repository。
 
@@ -157,3 +159,11 @@ Windows PowerShell：
 3. 檢查 `git status`
 4. 依使用者要求 commit／push
 5. 回報 Changed、Verified、Notes
+
+## 十、下一步優先順序
+
+1. 執行 `scripts/validate-skills.ps1` 並檢查所有 Skill 的結構一致性。
+2. 進行相鄰 Skills 的重複與路由衝突審查。
+3. 以代表性情境測試主要路由與閉環流程。
+4. 同步 README、CHANGELOG 與本交接文件的狀態。
+5. 由使用者決定是否 commit；本 Repository 沒有 remote 操作需求。

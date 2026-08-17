@@ -5,9 +5,20 @@ description: Use when organizing scattered notes, documents, or links into a sea
 
 # Knowledge Base Organizing
 
+## Use when
+
+Use this skill when organizing scattered notes, documents, or links into a searchable and maintainable knowledge base.
+
 ## Procedure
 
 Inventory sources, group by user intent and lifecycle, identify duplicates and authoritative sources, propose naming and tagging rules, and map gaps. Produce structure, migration order, ownership, and maintenance cadence.
+
+## Verification
+
+- Sources, provenance, authority, lifecycle, and ownership are explicit.
+- Duplicates, gaps, stale material, and unresolved conflicts are identified.
+- Naming, tagging, retrieval, migration, and maintenance rules are actionable.
+- The proposed structure supports the intended user intents.
 
 ## Output
 
