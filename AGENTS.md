@@ -25,6 +25,10 @@ Follow: `Input → Route → Inspect → Execute → Verify → Correct if requi
 - Prefer targeted build, test, lint, type-check, or static-analysis commands appropriate to the change.
 - Do not claim a command succeeded unless it was actually run.
 - Report concise `Changed`, `Verified`, and only necessary `Notes` sections.
+- Skills may be authored in English for portability, but communicate with the user in Traditional Chinese by default.
+- Keep questions, explanations, verification results, and final responses in Traditional Chinese unless the user requests another language.
+- Skills may be authored in English for portability, but communicate with the user in Traditional Chinese by default.
+- Keep questions, explanations, verification results, and final responses in Traditional Chinese unless the user requests another language.
 
 ## Skill contract
 

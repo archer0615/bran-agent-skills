@@ -9,3 +9,5 @@
 - Use `implementation-validator` after implementation.
 - Use `quality-gate` before delivery.
 - Composite skills may coordinate focused skills but must not replace verification.
+- Keep skill instructions in English when useful for portability, but respond to the user in Traditional Chinese by default.
+- Use Traditional Chinese for questions, progress explanations, verification results, and final answers unless the user requests otherwise.
