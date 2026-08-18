@@ -45,8 +45,6 @@ cd /path/to/bran-agent-skills
 
 已納入的 Playbook 能力：`sop-generator`、`knowledge-base-organizing`、`option-comparison`、`project-tracking`、`human-review-workflow`、`scenario-planning`、`context-management`、`prompt-evaluation`、`ai-governance`。
 
-目前共 23 個 Skills，已完成第一輪正文補強；包含觸發條件、執行流程、決策規則、驗證與輸出格式。完整狀態與後續工作請參考 [`references/continuation-handoff.md`](references/continuation-handoff.md)。
-
 ## 安裝後設定
 
 ### Codex 全域「自訂指令」
@@ -171,3 +169,13 @@ Codex 會先判斷指令是否已經可以直接執行：
 - 不確定要走哪個能力：使用 `personal-ai-task-router`。
 
 這樣可以兼顧自動優化與最低必要修改，避免每個簡單請求都被改寫成冗長 Prompt。
+
+## 路由情境測試
+
+代表性路由情境與預期 Skill 順序收錄於 [`references/skill-scenarios.md`](references/skill-scenarios.md)，可用來檢查新增或修改 Skill 後的實際行為。
+
+Windows PowerShell 可執行：
+
+```powershell
+.\scripts\validate-scenarios.ps1
+```
