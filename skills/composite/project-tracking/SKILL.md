@@ -17,6 +17,7 @@ Use this skill when turning project updates or repository evidence into a concis
 4. Produce actions with owner, due date or checkpoint, dependency, and completion signal.
 5. Maintain a risk register with likelihood, impact, mitigation, trigger, and escalation owner.
 6. Identify the next checkpoint and the smallest action that moves blocked or at-risk work forward.
+7. For each material risk, record the trigger that changes its status and the evidence needed to close it; do not use activity volume as a progress proxy.
 
 ## Decision rules
 
@@ -24,6 +25,8 @@ Use this skill when turning project updates or repository evidence into a concis
 - A missed dependency, unresolved decision, or acceptance risk can make a milestone at risk.
 - Assign actions an owner, checkpoint, and completion signal when known.
 - Separate current state from forecast, assumption, and stale information.
+- Escalate blockers affecting the critical path, safety, public commitments, or acceptance criteria.
+- Keep status reporting separate from detailed execution notes; link evidence rather than copying unverified narrative.
 
 ## Verification
 
@@ -31,6 +34,7 @@ Use this skill when turning project updates or repository evidence into a concis
 - Owners, dependencies, risks, and next checkpoints are not invented.
 - Blockers include impact and a concrete resolution or escalation path.
 - Completed work is distinguished from planned or merely discussed work.
+- Every at-risk or blocked item has a next checkpoint, mitigation, or explicit escalation gap.
 
 ## Output
 

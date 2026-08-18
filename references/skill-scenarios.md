@@ -166,6 +166,24 @@
 - 保留檔案、命令、結果、未提交變更邊界與下一個明確動作
 - 恢復後重新驗證，不把 checkpoint 當成成功證據
 
+## 10. 多能力請求路由
+
+### Prompt
+
+```text
+請評估這個 AI 流程是否適合上線，先研究目前規範，再設計人工審查與驗證流程。
+```
+
+### Expected route
+
+`personal-ai-task-router` → `evidence-first-research` → `human-review-workflow` → `quality-gate`
+
+### Required behavior
+
+- 指定一個主要路由 owner，並說明每個 supporting Skill 的輸入與交接輸出
+- 先處理目前資料與規範的 freshness，再設計人工審查門檻
+- 不把多個 Skill 的責任混寫，也不跳過最終品質檢查
+
 ## Review checklist
 
 - 是否選擇最窄且足夠的 Skill

@@ -6,9 +6,17 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - name: Validate skill structure
@@ -20,3 +28,22 @@ jobs:
       - name: Validate library boundaries
         shell: pwsh
         run: ./scripts/validate-library.ps1
+      - name: Validate PowerShell syntax
+        shell: pwsh
+        run: ./scripts/validate-powershell.ps1
+      - name: Validate Markdown
+        shell: pwsh
+        run: ./scripts/validate-markdown.ps1
+      - name: Validate cross-document consistency
+        shell: pwsh
+        run: ./scripts/validate-consistency.ps1
+      - name: Write validation summary
+        if: always()
+        shell: pwsh
+        run: |
+          "## Skill validation" >> $env:GITHUB_STEP_SUMMARY
+          "- Skill structure: executed" >> $env:GITHUB_STEP_SUMMARY
+          "- Routing scenarios and JSON cases: executed" >> $env:GITHUB_STEP_SUMMARY
+          "- Library boundaries: executed" >> $env:GITHUB_STEP_SUMMARY
+          "- PowerShell syntax and Markdown: executed" >> $env:GITHUB_STEP_SUMMARY
+          "- Cross-document consistency: executed" >> $env:GITHUB_STEP_SUMMARY

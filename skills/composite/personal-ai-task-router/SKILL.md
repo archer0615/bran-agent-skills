@@ -28,6 +28,10 @@ Use this skill when a request may match more than one capability, or when the us
 - Use `quality-gate` before delivery when correctness, compatibility, security, or completeness needs a final review.
 - Use `closed-loop-task-solver` when the work spans inspect, execute, verify, and correction.
 - Do not select a broader composite skill when a narrower skill satisfies the request.
+- If two Skills appear to match, prefer the one with the more specific trigger and primary artifact; use the other only when it owns a distinct dependency or review gate.
+- Use at most one primary execution owner per workstream; supporting Skills must have an explicit input and handoff output.
+- For high-impact, irreversible, external, privacy-sensitive, or security-sensitive work, include governance or human review before execution.
+- When route confidence is low, state the competing candidates and the evidence or clarification needed to choose safely.
 
 ## Verification
 
@@ -35,8 +39,13 @@ Use this skill when a request may match more than one capability, or when the us
 - Confirm required dependencies and sequencing are explicit.
 - Confirm the route includes a concrete verification method.
 - Confirm no unsupported status, assumption, or completion claim is introduced.
+- Confirm the handoff specifies the next Skill, its input artifact, expected output, and return condition.
 
 ## Output
 
-Return the selected capability or ordered capability sequence, the routing reason, the key assumptions or missing information, the expected output, and the verification method.
+Return the selected capability or ordered capability sequence, the routing reason, rejected alternatives when material, the key assumptions or missing information, the handoff contract, expected output, and verification method.
+
+## Example
+
+For a request to assess whether an AI workflow is ready for external use, route to `evidence-first-research` when current evidence is needed, then `human-review-workflow`, and finish with `quality-gate`. Keep `personal-ai-task-router` as the routing owner rather than duplicating those procedures.
 

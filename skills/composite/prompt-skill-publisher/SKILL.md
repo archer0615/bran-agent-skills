@@ -17,6 +17,7 @@ Use this skill when turning an approved prompt, workflow, or skill into a valida
 4. Check metadata, trigger description, procedure, verification, output format, links, examples, and compatibility with existing artifacts.
 5. Run the repository validator and targeted content checks. Review the diff for secrets, personal data, machine-specific paths, unsupported claims, and accidental scope changes.
 6. Publish or distribute only when explicitly requested; otherwise leave a validated local artifact and state the remaining publication action.
+7. Record the artifact version, compatibility impact, migration or rollback note, and the exact validation evidence used for publication readiness.
 
 ## Decision rules
 
@@ -24,6 +25,8 @@ Use this skill when turning an approved prompt, workflow, or skill into a valida
 - Prefer the repository’s established artifact format over a new format.
 - Do not silently broaden a prompt or skill to cover adjacent use cases.
 - A failed validation blocks publication until corrected and re-verified.
+- A renamed, removed, or output-contract-changing artifact requires a migration note and explicit compatibility decision.
+- Publication is not implied by a commit; release or external distribution needs its own approval.
 
 ## Verification
 
@@ -31,6 +34,7 @@ Use this skill when turning an approved prompt, workflow, or skill into a valida
 - The trigger is specific enough to route correctly and does not duplicate an existing capability.
 - Validation ran against the final artifact.
 - Publication status and remaining limitations are explicit.
+- Version, compatibility, migration, and rollback information is recorded when the artifact changes behavior or routing.
 
 ## Output
 

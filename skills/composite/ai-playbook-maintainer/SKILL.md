@@ -18,6 +18,7 @@ Use this skill when maintaining an AI playbook, capability catalog, documentatio
 5. Validate frontmatter, links, counts, routing references, examples, and generated output using available repository checks.
 6. Review the diff for accidental scope expansion, secrets, personal data, machine-specific paths, and claims unsupported by source files.
 7. Record the changed source, affected surfaces, verification evidence, remaining drift, and any manual publication dependency.
+8. For a website or catalog update, preview the affected navigation and representative entry before publication; for a repository-only update, validate the source-to-index mapping instead.
 
 ## Decision rules
 
@@ -26,6 +27,8 @@ Use this skill when maintaining an AI playbook, capability catalog, documentatio
 - Keep category names, skill names, descriptions, and links consistent across surfaces.
 - Treat missing or stale source evidence as a blocker for publishing a claim.
 - Do not publish, deploy, or alter external systems unless explicitly requested.
+- Treat counts, category labels, and route order as derived claims that must be regenerated or checked from source.
+- Keep generated content reproducible; record the generator or manual synchronization step when applicable.
 
 ## Verification
 
@@ -33,6 +36,7 @@ Use this skill when maintaining an AI playbook, capability catalog, documentatio
 - Navigation, links, metadata, and counts are internally consistent.
 - Repository validation passes after the final modification.
 - The report distinguishes synchronized changes from external publication still required.
+- At least one representative entry and one changed navigation path have been checked, or the limitation is explicit.
 
 ## Output
 

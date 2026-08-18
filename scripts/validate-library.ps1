@@ -10,7 +10,7 @@ Get-ChildItem $skillRoot -Recurse -Filter SKILL.md | ForEach-Object {
   if($name){$skills[$name]=$_.FullName}
   foreach($match in [regex]::Matches($text,'`([a-z0-9-]+)`')) {
     $ref=$match.Groups[1].Value
-    if($ref -ne $name -and $ref -notin @('planned','attempted','verified','blocked','deferred','unverified','name')) {
+    if($ref -ne $name -and $ref -notin @('planned','attempted','verified','blocked','deferred','unverified','name','smoke','targeted','affected-area','full','pass','fail','partial','ready','not-ready')) {
       if(-not $skills.ContainsKey($ref) -and -not (Test-Path (Join-Path $skillRoot "*\$ref\SKILL.md"))) {$warnings += "$($_.FullName): unresolved Skill reference '$ref'"}
     }
   }

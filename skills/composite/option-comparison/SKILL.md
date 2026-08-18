@@ -17,6 +17,7 @@ Use this skill when comparing products, designs, vendors, tools, or implementati
 4. Build the comparison with facts, estimates, costs, risks, trade-offs, reversibility, and fit.
 5. Separate observed facts from judgment and sensitivity to criteria weights.
 6. Recommend an option with conditions, mitigations, and the evidence that would change the recommendation.
+7. Run a sensitivity check on the highest-impact weights or unknowns and identify whether a small pilot can reduce decision risk.
 
 ## Decision rules
 
@@ -24,6 +25,8 @@ Use this skill when comparing products, designs, vendors, tools, or implementati
 - A disqualifying constraint overrides a high aggregate score.
 - Do not invent missing values; mark them unknown or state estimation assumptions.
 - Include total cost, operational burden, exitability, and downside risk where relevant.
+- Treat a high score as insufficient when evidence quality is weak or the option violates a must-have.
+- Prefer conditional recommendations when the ranking changes under plausible weights or assumptions.
 
 ## Verification
 
@@ -31,6 +34,7 @@ Use this skill when comparing products, designs, vendors, tools, or implementati
 - Material claims have sources or are labeled assumptions.
 - Total cost, operational risk, compatibility, and exit or rollback implications are considered where relevant.
 - The recommendation is traceable to the comparison and unresolved gaps are explicit.
+- Sensitivity, pilot or validation path, and exit criteria are stated when the decision is material.
 
 ## Output
 

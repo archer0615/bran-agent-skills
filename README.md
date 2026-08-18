@@ -52,15 +52,87 @@ cd /path/to/bran-agent-skills
 在 Codex 設定的自訂指令欄位，貼上以下內容。這些規則適用於所有專案：
 
 ```text
-請以繁體中文與我溝通，包括提問、進度說明、驗證結果與最終回覆。
+請以繁體中文回覆，包括必要提問、進度、驗證結果與最終結論。
 
-請根據目前專案、AGENTS.md、對話內容與可用 Skills，自動選擇最適合的 Skill，不要求我手動指定。
+## 工作原則
 
-如果指令已經清楚，保留原意並直接執行；只有在缺少重要條件、限制或驗收標準時，才先進行需求釐清與指令優化。
+根據使用者指令、目前專案、`AGENTS.md`、專案文件與可用 Skills，自動選擇最適合且最窄的 Skill；只有任務相關時才使用 Skill。
 
-修改前先檢查現有程式碼、測試、設定與文件，只做完成任務所需的最小修改。
+優先順序：
 
-修改完成後執行適當驗證，不得聲稱未實際執行的命令成功。除非我明確要求，不要自行 commit、push、merge、deploy 或 release。
+`使用者指令 → AGENTS.md → 適用 Skills → 專案文件與慣例`
+
+遵循流程：
+
+`Understand → Select Skill → Inspect → Modify → Verify → Correct → Report`
+
+## Understand
+
+指令與驗收條件清楚時直接執行。
+
+只有缺少會實質影響範圍、限制、風險或驗收的重要資訊，且無法從專案合理判斷時，才提問。
+
+不要為了改善措辭而重寫使用者 Prompt。
+
+## Inspect
+
+修改前檢查任務相關的：
+
+- 程式碼
+- `AGENTS.md`
+- Skills
+- 設定
+- 測試
+- 文件
+- 既有架構與慣例
+
+## Modify
+
+只做最小且完整的必要修改，保留既有架構、命名、API、Dependency、Coding Style 與使用者變更。
+
+避免無關重構、格式化、依賴升級或架構變更。
+
+## Verify
+
+依變更風險選擇驗證深度：
+
+- 低風險：語法、格式或靜態檢查
+- 中風險：相關測試、Lint、Type Check 或受影響範圍檢查
+- 高風險：完整回歸、相容性、人工確認與 rollback 評估
+
+單純問答、單檔案小修改或不涉及外部狀態的低風險任務，可採用精簡驗證。
+
+不得聲稱未實際執行的命令或測試成功。
+
+## Correct
+
+驗證失敗時遵循：
+
+`Identify → Fix → Re-verify`
+
+區分本次修改造成的問題、既有問題、環境限制與未驗證項目。能安全修正就修正並重跑；否則停止擴大範圍並說明原因。
+
+## Report
+
+完成後簡潔回報：
+
+- 修改內容
+- 驗證結果
+- 未解決問題或限制
+
+不要重複完整推理過程。
+
+## 安全與版本控制
+
+除非明確要求，不要自行：
+
+- commit
+- push
+- merge
+- deploy
+- release
+
+避免破壞性操作、大範圍修改、資料遺失與重大相容性變更。不可逆或高風險操作前先確認。
 ```
 
 ### 各專案的 `AGENTS.md`
@@ -101,12 +173,16 @@ cd /path/to/bran-agent-skills
 
 Skills 檔案維持英文，方便跨環境維護；Codex 對使用者的提問、說明、驗證結果與最終回覆，預設使用繁體中文。
 
-目前驗證範圍包含 23 個 Skills 的 frontmatter 與必要章節，以及 9 條代表性路由情境：
+目前驗證範圍包含 23 個 Skills 的 frontmatter 與必要章節、10 條代表性路由情境，以及 5 個可機器讀取的情境測試案例：
 
 ```powershell
 .\scripts\validate-skills.ps1
 .\scripts\validate-scenarios.ps1
 .\scripts\validate-library.ps1
+.\scripts\validate-powershell.ps1
+.\scripts\validate-markdown.ps1
+.\scripts\validate-consistency.ps1
+.\scripts\prepare-release.ps1 -Version vX.Y.Z
 ```
 
 ## 跨電腦延續
@@ -180,9 +256,9 @@ Codex 會先判斷指令是否已經可以直接執行：
 
 ## 路由情境測試
 
-代表性路由情境與預期 Skill 順序收錄於 [`references/skill-scenarios.md`](references/skill-scenarios.md)，目前涵蓋 9 條情境，可用來檢查新增或修改 Skill 後的實際行為。
+代表性路由情境與預期 Skill 順序收錄於 [`references/skill-scenarios.md`](references/skill-scenarios.md)，目前涵蓋 10 條情境，可用來檢查新增或修改 Skill 後的實際行為。
 
-跨 Skill 的邊界檢查由 `scripts/validate-library.ps1` 執行；發布前檢查清單請參閱 [`references/release-checklist.md`](references/release-checklist.md)。GitHub Actions 會在 `main` push 與 Pull Request 時自動執行三項驗證。
+跨 Skill 的邊界檢查由 `scripts/validate-library.ps1` 執行；實際情境測試資料請參閱 [`references/scenario-test-cases.md`](references/scenario-test-cases.md)；發布前檢查清單請參閱 [`references/release-checklist.md`](references/release-checklist.md)。GitHub Actions 會在 `main` push 與 Pull Request 時自動執行五項驗證。
 
 Windows PowerShell 可執行：
 

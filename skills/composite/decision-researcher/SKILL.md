@@ -17,6 +17,7 @@ Use this skill when a decision needs explicit criteria, evidence, alternatives, 
 4. Identify realistic alternatives, including the option to defer or do nothing when relevant.
 5. Compare alternatives against the criteria, making assumptions and trade-offs explicit. Distinguish facts, estimates, and judgments.
 6. Recommend an option with rationale, risks, mitigations, reversibility, and a concrete next action. State what evidence would change the recommendation.
+7. Stress-test the recommendation against the most important uncertain assumption and a plausible downside case before finalizing it.
 
 ## Decision rules
 
@@ -24,6 +25,8 @@ Use this skill when a decision needs explicit criteria, evidence, alternatives, 
 - Use primary or authoritative sources for high-impact, current, or technical claims.
 - Avoid false precision when evidence is incomplete; show confidence and sensitivity to assumptions.
 - Escalate legal, security, financial, medical, or production-impact questions to appropriate human review.
+- Include defer, do-nothing, or reversible experiment options when they are credible alternatives.
+- If the recommendation changes under reasonable weights or evidence interpretations, present a conditional recommendation instead of a single winner.
 
 ## Verification
 
@@ -31,6 +34,7 @@ Use this skill when a decision needs explicit criteria, evidence, alternatives, 
 - Material claims have evidence or are labeled as assumptions.
 - The recommendation follows from the comparison and includes risks and reversibility.
 - Open questions and decision-changing evidence are explicit.
+- The recommendation has a confidence level and a stated sensitivity or downside check.
 
 ## Output
 

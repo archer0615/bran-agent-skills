@@ -35,6 +35,8 @@
 - 已建立跨 Skill 邊界檢查：`scripts/validate-library.ps1`
 - 已建立 GitHub Actions 驗證流程：`.github/workflows/validate.yml`
 - 已建立發布檢查清單：`references/release-checklist.md`
+- 已建立具體情境測試資料：`references/scenario-test-cases.md`
+- GitHub Actions 已擴充 PowerShell syntax 與 Markdown 檢查。
 
 ## 三、目前 Skills
 
@@ -116,15 +118,87 @@ Windows PowerShell：
 在 Codex 的全域「自訂指令」貼上：
 
 ```text
-請以繁體中文與我溝通，包括提問、進度說明、驗證結果與最終回覆。
+請以繁體中文回覆，包括必要提問、進度、驗證結果與最終結論。
 
-請根據目前專案、AGENTS.md、對話內容與可用 Skills，自動選擇最適合的 Skill，不要求我手動指定。
+## 工作原則
 
-如果指令已經清楚，保留原意並直接執行；只有在缺少重要條件、限制或驗收標準時，才先進行需求釐清與指令優化。
+根據使用者指令、目前專案、`AGENTS.md`、專案文件與可用 Skills，自動選擇最適合且最窄的 Skill；只有任務相關時才使用 Skill。
 
-修改前先檢查現有程式碼、測試、設定與文件，只做完成任務所需的最小修改。
+優先順序：
 
-修改完成後執行適當驗證，不得聲稱未實際執行的命令成功。除非我明確要求，不要自行 commit、push、merge、deploy 或 release。
+`使用者指令 → AGENTS.md → 適用 Skills → 專案文件與慣例`
+
+遵循流程：
+
+`Understand → Select Skill → Inspect → Modify → Verify → Correct → Report`
+
+## Understand
+
+指令與驗收條件清楚時直接執行。
+
+只有缺少會實質影響範圍、限制、風險或驗收的重要資訊，且無法從專案合理判斷時，才提問。
+
+不要為了改善措辭而重寫使用者 Prompt。
+
+## Inspect
+
+修改前檢查任務相關的：
+
+- 程式碼
+- `AGENTS.md`
+- Skills
+- 設定
+- 測試
+- 文件
+- 既有架構與慣例
+
+## Modify
+
+只做最小且完整的必要修改，保留既有架構、命名、API、Dependency、Coding Style 與使用者變更。
+
+避免無關重構、格式化、依賴升級或架構變更。
+
+## Verify
+
+依變更風險選擇驗證深度：
+
+- 低風險：語法、格式或靜態檢查
+- 中風險：相關測試、Lint、Type Check 或受影響範圍檢查
+- 高風險：完整回歸、相容性、人工確認與 rollback 評估
+
+單純問答、單檔案小修改或不涉及外部狀態的低風險任務，可採用精簡驗證。
+
+不得聲稱未實際執行的命令或測試成功。
+
+## Correct
+
+驗證失敗時遵循：
+
+`Identify → Fix → Re-verify`
+
+區分本次修改造成的問題、既有問題、環境限制與未驗證項目。能安全修正就修正並重跑；否則停止擴大範圍並說明原因。
+
+## Report
+
+完成後簡潔回報：
+
+- 修改內容
+- 驗證結果
+- 未解決問題或限制
+
+不要重複完整推理過程。
+
+## 安全與版本控制
+
+除非明確要求，不要自行：
+
+- commit
+- push
+- merge
+- deploy
+- release
+
+避免破壞性操作、大範圍修改、資料遺失與重大相容性變更。不可逆或高風險操作前先確認。
 ```
 
 ## 六、專案層級設定
@@ -143,7 +217,7 @@ Windows PowerShell：
 ## 七、目前已知狀態與限制
 
 - 23 個 Skills 已完成 frontmatter、必要章節與 Decision rules 一致性補強。
-- 已完成初步跨 Skill 路由審查，並補充至 9 條代表性情境。
+- 已完成初步跨 Skill 路由審查，並補充至 10 條代表性情境，包含多能力請求的 handoff contract。
 - 目前 Repository 在最近一次工作結束時為 clean，且已同步至 `origin/main`。
 - 不要一次大量複製外部 Playbook Skills；先確認是否與現有能力重複。
 - 不要把 Token、密碼、API Key、個資或機器專屬路徑寫入 Repository。
@@ -168,6 +242,6 @@ Windows PowerShell：
 
 ## 十、下一步優先順序
 
-1. 以 9 條代表性情境測試主要路由與閉環流程。
+1. 以 10 條代表性情境測試主要路由與閉環流程。
 2. 持續檢查新增 Skill 是否造成重複能力或路由衝突。
 3. 依 `references/release-checklist.md` 進行版本化與發布。

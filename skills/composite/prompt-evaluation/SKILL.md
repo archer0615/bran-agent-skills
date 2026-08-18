@@ -36,3 +36,7 @@ Use this skill when testing whether a prompt is clear, robust, consistent, safe,
 
 Return the evaluation plan, test cases, rubric, results, failure modes, revision diff or recommendation, regression status, assumptions, and unresolved questions. Communicate with the user in Traditional Chinese unless another language is requested.
 
+## Example
+
+For a JSON-output prompt, test a normal request, missing fields, conflicting instructions, injection wording, multilingual input, and a prior regression. Score format compliance and safe handling separately from fluency.
+

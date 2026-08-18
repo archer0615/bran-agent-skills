@@ -17,6 +17,8 @@ Use this checklist before publishing a Skill library update.
 4. Run `scripts/validate-library.ps1`.
 5. Review routing scenarios and update README or handoff documentation when counts or routes change.
 6. Record unresolved warnings, compatibility notes, and rollback steps.
+7. Run `scripts/prepare-release.ps1 -Version vX.Y.Z` to repeat all local checks before proposing a tag.
+8. Confirm README, handoff, scenario Markdown, scenario JSON, and CI validation lists remain consistent.
 
 ## Publication
 
@@ -24,3 +26,4 @@ Use this checklist before publishing a Skill library update.
 - Push only the intended branch after local checks pass.
 - Confirm the GitHub Actions validation workflow passes.
 - Create a release or tag only after review; do not imply a release from a commit alone.
+- `prepare-release.ps1` does not create commits, tags, releases, or remote changes; those remain explicit actions.

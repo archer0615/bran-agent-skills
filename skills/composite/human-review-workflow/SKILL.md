@@ -35,3 +35,7 @@ Use this skill when AI-generated or automated output needs a defined human appro
 
 Return the workflow, roles, criteria, escalation thresholds, evidence record, rollback path, assumptions, unresolved questions, and verification criteria. Communicate with the user in Traditional Chinese unless another language is requested.
 
+## Example
+
+For an AI-generated financial recommendation that can trigger an external action, quarantine the action until an authorized reviewer confirms evidence, records a decision, or escalates the case; preserve rollback and re-review paths.
+

@@ -16,6 +16,7 @@ Use this skill when initializing Codex guidance, project instructions, capabilit
 3. Create or update only the smallest required guidance files and capability links. Keep project rules separate from global instructions and do not duplicate the full skill library.
 4. Preserve existing instructions unless they conflict with verified project behavior or the explicit request. Flag conflicts rather than silently overriding them.
 5. Validate file placement, Markdown structure, commands, links, and consistency with the actual project.
+6. Perform an idempotence pass: verify that repeating the bootstrap does not duplicate rules, overwrite user content, or create broken links.
 
 ## Decision rules
 
@@ -23,6 +24,8 @@ Use this skill when initializing Codex guidance, project instructions, capabilit
 - Derive commands from project configuration and existing documentation; do not invent package managers or deployment steps.
 - Never include secrets, personal data, or machine-specific paths.
 - Do not install dependencies, publish, deploy, or change external systems unless explicitly requested.
+- Prefer a reversible, additive change; record any required manual migration or platform-specific limitation.
+- Treat missing project evidence as a conditional instruction, not permission to invent commands.
 
 ## Verification
 
@@ -30,6 +33,7 @@ Use this skill when initializing Codex guidance, project instructions, capabilit
 - Instructions are scoped, non-duplicative, and discoverable from the project root.
 - Referenced commands and links are valid or clearly marked as conditional.
 - Existing project behavior and user changes remain intact.
+- A repeat-run check confirms setup is idempotent or documents the exact limitation.
 
 ## Output
 

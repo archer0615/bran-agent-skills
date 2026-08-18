@@ -17,12 +17,15 @@ Use this skill when exploring plausible futures, uncertainty, or decisions that 
 4. Describe each scenario, implications, risks, early signals, and conditions without presenting it as a prediction.
 5. Test current options across scenarios and identify robust, contingent, and fragile choices.
 6. Recommend no-regret actions, trigger-based actions, monitoring signals, and a review cadence.
+7. Test each proposed action against the baseline and at least one adverse scenario; identify which assumptions make it fragile.
 
 ## Decision rules
 
 - Scenarios are plausible decision tools, not predictions unless separately supported by probability evidence.
 - Keep scenarios distinct and separate evidence, assumptions, uncertainty, and interpretation.
 - Prefer no-regret actions under high uncertainty; gate irreversible actions with signposts.
+- Include a baseline and at least one downside or stress scenario when the decision has material exposure.
+- Use early signals as monitoring triggers, not as proof that a scenario will occur.
 
 ## Verification
 
@@ -30,6 +33,7 @@ Use this skill when exploring plausible futures, uncertainty, or decisions that 
 - Key assumptions, uncertainties, signals, and time horizon are explicit.
 - Options are tested consistently across scenarios.
 - Actions include triggers, owners where applicable, and a reassessment point.
+- Each recommendation identifies no-regret, contingent, and fragile actions with their relevant assumptions.
 
 ## Output
 
