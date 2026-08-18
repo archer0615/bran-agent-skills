@@ -18,6 +18,13 @@ Use this skill to extract a repeatable procedure, decision rule, prompt pattern,
 5. Draft the smallest reusable skill or recommend against creating one when the pattern is not sufficiently repeatable.
 6. Validate the draft against representative cases and preserve the source terminology needed for future use.
 
+## Decision rules
+
+- Generalize only when a repeatable pattern is supported; label inference, assumption, conflict, and unconfirmed material.
+- Preserve purpose and constraints; do not add unsupported tools, dependencies, or policy.
+- Choose SOP, prompt, or Skill output according to the reusable artifact and route downstream work narrowly.
+- Redact secrets, personal data, machine-specific paths, and irreversible actions.
+
 ## Verification
 
 - The candidate has a clear trigger and reusable outcome.

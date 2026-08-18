@@ -18,6 +18,13 @@ Use this skill to organize, improve, classify, deduplicate, or version reusable 
 5. Test representative, missing-data, boundary, and adversarial inputs. Record regressions and compatibility notes.
 6. Assign a stable name and version note, then document the change and recommended usage.
 
+## Decision rules
+
+- Preserve purpose and output contract unless a behavior change is explicitly authorized.
+- Keep incompatible audiences, triggers, safety constraints, or acceptance criteria as separate variants.
+- Treat examples as non-normative unless required, and do not claim reliability without evaluation evidence.
+- Route robustness testing to `prompt-evaluation` and conversation extraction to `conversation-skill-miner`.
+
 ## Verification
 
 - The prompt has a clear purpose, trigger, inputs, and output contract.

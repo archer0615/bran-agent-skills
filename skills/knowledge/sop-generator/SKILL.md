@@ -18,6 +18,13 @@ Use this skill when turning a repeatable task or informal know-how into a clear,
 5. Include checks at the points where errors can be detected earliest and a final verification that proves completion.
 6. Review the SOP with a fresh execution path or representative case; correct ambiguity and record owner, version, and change notes.
 
+## Decision rules
+
+- Preserve actual purpose and constraints; do not turn guesses into mandatory steps.
+- Every step needs an observable action or result, and every decision needs a condition and branch.
+- Mark approval-required, permission-sensitive, irreversible, and escalation actions explicitly.
+- Keep exceptions adjacent to the step where they occur.
+
 ## Verification
 
 - Another person can execute the SOP from the document without relying on hidden context.

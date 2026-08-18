@@ -18,6 +18,13 @@ Use this skill when testing whether a prompt is clear, robust, consistent, safe,
 5. Identify instruction conflicts, hidden assumptions, leakage risks, overfitting, and unsupported claims.
 6. Revise minimally, preserve intended behavior, and re-run the full regression set. Compare against the prior version.
 
+## Decision rules
+
+- Every test case needs expected behavior and an observable criterion; otherwise classify it as exploratory.
+- Missing-data, ambiguity, safety, privacy, instruction hierarchy, and format behavior are part of correctness.
+- Classify failures as prompt, model, tool, data, or environment related before revising.
+- Preserve the output contract and do not overfit to the test set or hide regressions.
+
 ## Verification
 
 - Test cases cover representative success and failure conditions.

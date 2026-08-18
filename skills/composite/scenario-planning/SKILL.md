@@ -18,6 +18,12 @@ Use this skill when exploring plausible futures, uncertainty, or decisions that 
 5. Test current options across scenarios and identify robust, contingent, and fragile choices.
 6. Recommend no-regret actions, trigger-based actions, monitoring signals, and a review cadence.
 
+## Decision rules
+
+- Scenarios are plausible decision tools, not predictions unless separately supported by probability evidence.
+- Keep scenarios distinct and separate evidence, assumptions, uncertainty, and interpretation.
+- Prefer no-regret actions under high uncertainty; gate irreversible actions with signposts.
+
 ## Verification
 
 - Scenarios are plausible, distinct, internally coherent, and not disguised forecasts.

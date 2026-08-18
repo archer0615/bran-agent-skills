@@ -17,6 +17,14 @@ Use this skill when a task has a long conversation, many files, competing instru
 4. Reconcile conflicts by authority and recency. Do not silently discard a higher-priority instruction or a newer verified state.
 5. At handoff, provide the current objective, completed work, remaining work, blockers, changed files, verification evidence, and the first safe next action.
 
+-
+## Decision rules
+
+- Preserve information that affects scope, safety, acceptance, routing, or verification; compress incidental narrative.
+- Distinguish planned, attempted, verified, blocked, deferred, and unverified work.
+- Resolve conflicts by authority and recency, recording superseded constraints and decisions.
+- Treat uncommitted files and user changes as protected context.
+
 ## Verification
 
 - Another agent can identify the current objective and next action without rereading the full conversation.

@@ -17,6 +17,12 @@ Use this skill when defining practical governance for AI use, including risk cla
 4. Assign accountable owners, reviewers, escalation paths, review cadence, and evidence required for continued use.
 5. Produce a lightweight policy and control checklist proportional to the risk. Flag legal or regulatory questions for qualified review.
 
+## Decision rules
+
+- Higher-impact, less reversible, more sensitive, and more autonomous uses require stronger controls and human oversight.
+- Every control needs an owner, trigger, evidence requirement, and response path.
+- Separate policy requirements, factual evidence, risk judgments, and unresolved legal questions.
+
 ## Verification
 
 - Each material use case has a risk class, owner, and required controls.

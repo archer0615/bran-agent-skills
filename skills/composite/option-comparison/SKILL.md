@@ -18,6 +18,13 @@ Use this skill when comparing products, designs, vendors, tools, or implementati
 5. Separate observed facts from judgment and sensitivity to criteria weights.
 6. Recommend an option with conditions, mitigations, and the evidence that would change the recommendation.
 
+## Decision rules
+
+- Use identical criteria and scoring definitions for all options.
+- A disqualifying constraint overrides a high aggregate score.
+- Do not invent missing values; mark them unknown or state estimation assumptions.
+- Include total cost, operational burden, exitability, and downside risk where relevant.
+
 ## Verification
 
 - Every option is evaluated against the same criteria or differences are explained.

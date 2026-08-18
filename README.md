@@ -101,6 +101,13 @@ cd /path/to/bran-agent-skills
 
 Skills 檔案維持英文，方便跨環境維護；Codex 對使用者的提問、說明、驗證結果與最終回覆，預設使用繁體中文。
 
+目前驗證範圍包含 23 個 Skills 的 frontmatter 與必要章節，以及 9 條代表性路由情境：
+
+```powershell
+.\scripts\validate-skills.ps1
+.\scripts\validate-scenarios.ps1
+```
+
 ## 跨電腦延續
 
 完整的目前狀態、換電腦安裝步驟、Codex 自訂指令、專案 `AGENTS.md` 說明與下一步，請閱讀 [`references/continuation-handoff.md`](references/continuation-handoff.md)。
@@ -172,7 +179,7 @@ Codex 會先判斷指令是否已經可以直接執行：
 
 ## 路由情境測試
 
-代表性路由情境與預期 Skill 順序收錄於 [`references/skill-scenarios.md`](references/skill-scenarios.md)，可用來檢查新增或修改 Skill 後的實際行為。
+代表性路由情境與預期 Skill 順序收錄於 [`references/skill-scenarios.md`](references/skill-scenarios.md)，目前涵蓋 9 條情境，可用來檢查新增或修改 Skill 後的實際行為。
 
 Windows PowerShell 可執行：
 

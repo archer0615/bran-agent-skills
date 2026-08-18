@@ -18,6 +18,13 @@ Use this skill for research requiring current, niche, high-impact, traceable, or
 5. Synthesize only what the evidence supports. Identify gaps, uncertainty, and claims that need human or specialist review.
 6. Present conclusions with near-source citations and state what could change them.
 
+## Decision rules
+
+- Use current, traceable sources when facts may have changed; prefer primary and authoritative sources.
+- Separate facts, estimates, assumptions, inferences, and unresolved conflicts.
+- Never fabricate citations, dates, quotations, or source contents.
+- For high-stakes topics, state limitations and recommend qualified review where appropriate.
+
 ## Verification
 
 - Material claims are traceable to relevant sources.

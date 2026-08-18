@@ -18,6 +18,13 @@ Use this skill to review, deduplicate, classify, improve, retire, or maintain a 
 5. Apply approved maintenance changes while preserving compatibility and repository conventions.
 6. Run structural and targeted content validation, then report unresolved overlap or future candidates.
 
+## Decision rules
+
+- Use the narrowest Skill whose trigger and output match the request.
+- Treat directory names and YAML `name` values as compatibility identifiers.
+- Classify overlap as duplicate, specialization, orchestration, or intentional handoff.
+- Prefer clarification and explicit handoffs over copied procedures or silent deletion.
+
 ## Verification
 
 - Every skill has valid metadata and a specific trigger.

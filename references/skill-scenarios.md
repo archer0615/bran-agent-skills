@@ -112,6 +112,60 @@
 - 不直接宣稱法律或合規結論
 - 包含拒絕、修正、回滾與事故處理路徑
 
+## 7. 專案初始化
+
+### Prompt
+
+```text
+請為這個 Repository 建立 Codex 專案指引，保留現有設定並驗證安裝可重複執行。
+```
+
+### Expected route
+
+`codex-project-bootstrap` → `implementation-validator` → `quality-gate`
+
+### Required behavior
+
+- 先檢查既有指引、README、設定與 bootstrap 腳本
+- 只新增必要的專案規則，不複製整份全域指令
+- 驗證路徑、格式、安裝結果與重複執行安全性
+
+## 8. Skill library maintenance
+
+### Prompt
+
+```text
+請盤點這個 Skill library 的重複能力、路由衝突與驗證缺口。
+```
+
+### Expected route
+
+`skill-curator` → `implementation-validator` → `quality-gate`
+
+### Required behavior
+
+- 建立能力 inventory 與邊界，而不是只依檔名判斷
+- 區分重複、專門化、Composite orchestration 與 handoff
+- 分開報告結構驗證、路由驗證與內容缺口
+
+## 9. Context handoff
+
+### Prompt
+
+```text
+這個任務即將交接到新的對話，請整理目前狀態、證據、未完成工作與恢復步驟。
+```
+
+### Expected route
+
+`context-management` → `project-tracking`
+
+### Required behavior
+
+- 區分已驗證、未驗證、阻塞、延後與參考資訊
+- 保留檔案、命令、結果、未提交變更邊界與下一個明確動作
+- 恢復後重新驗證，不把 checkpoint 當成成功證據
+
 ## Review checklist
 
 - 是否選擇最窄且足夠的 Skill

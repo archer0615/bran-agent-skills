@@ -18,6 +18,13 @@ Use this skill when turning project updates or repository evidence into a concis
 5. Maintain a risk register with likelihood, impact, mitigation, trigger, and escalation owner.
 6. Identify the next checkpoint and the smallest action that moves blocked or at-risk work forward.
 
+## Decision rules
+
+- Never invent progress, dates, owners, confidence, or resolution.
+- A missed dependency, unresolved decision, or acceptance risk can make a milestone at risk.
+- Assign actions an owner, checkpoint, and completion signal when known.
+- Separate current state from forecast, assumption, and stale information.
+
 ## Verification
 
 - Status claims trace to dated evidence or are explicitly marked unknown.

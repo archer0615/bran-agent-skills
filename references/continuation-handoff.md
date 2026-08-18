@@ -1,6 +1,6 @@
 # bran-agent-skills 對話交接文件
 
-> 最後更新：2026-08-17
+> 最後更新：2026-08-18
 > Repository：`https://github.com/archer0615/bran-agent-skills`
 > 目的：換電腦或更換 Codex 對話後，快速恢復工作上下文。
 
@@ -29,7 +29,7 @@
 - 重複執行安裝不會刪除實際 Skill 內容，也不應再跳出刪除確認
 - 23 個 Skills 的正文已完成第一輪補強，包含觸發條件、流程、決策規則、驗證與輸出格式
 - 最新驗證結果：`Validated 23 skills.`
-- 最新遠端同步 commit：`a6624c3 納入 AI Playbook 精選工作技能`
+- 最新遠端同步 commit：以 `git log` 與 `git status` 的實際結果為準
 - 已建立代表性路由情境：`references/skill-scenarios.md`
 - 已建立情境路由結構檢查：`scripts/validate-scenarios.ps1`
 
@@ -139,8 +139,8 @@ Windows PowerShell：
 
 ## 七、目前已知狀態與限制
 
-- 23 個 Skills 已完成 frontmatter 驗證與第一輪正文補強。
-- 下一階段應進行跨 Skill 一致性審查、重複能力檢查、README／交接文件同步，以及必要的實例測試。
+- 23 個 Skills 已完成 frontmatter、必要章節與 Decision rules 一致性補強。
+- 已完成初步跨 Skill 路由審查，並補充至 9 條代表性情境。
 - 目前 Repository 在最近一次工作結束時為 clean，且已同步至 `origin/main`。
 - 不要一次大量複製外部 Playbook Skills；先確認是否與現有能力重複。
 - 不要把 Token、密碼、API Key、個資或機器專屬路徑寫入 Repository。
@@ -165,7 +165,6 @@ Windows PowerShell：
 
 ## 十、下一步優先順序
 
-1. 以 `references/skill-scenarios.md` 的代表性情境測試主要路由與閉環流程。
-2. 針對早期精簡 Skills 補上具體輸入、決策規則、驗證與輸出格式。
-3. 同步 README、CHANGELOG 與本交接文件的狀態。
-4. 由使用者決定是否 commit／push；除非明確要求，不要自行進行 remote 操作。
+1. 以 9 條代表性情境測試主要路由與閉環流程。
+2. 持續檢查新增 Skill 是否造成重複能力或路由衝突。
+3. 由使用者決定是否 commit／push；除非明確要求，不要自行進行 remote 操作。

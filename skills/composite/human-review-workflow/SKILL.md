@@ -18,6 +18,12 @@ Use this skill when AI-generated or automated output needs a defined human appro
 5. Record the decision, reviewer, evidence, timestamp, corrections, exceptions, and audit trail without retaining unnecessary sensitive data.
 6. Define rollback, incident handling, and re-review when output or context changes.
 
+## Decision rules
+
+- Require approval before high-impact, irreversible, external, security-sensitive, or legally consequential actions.
+- Escalate when evidence is missing or conflicting, uncertainty is below threshold, or the reviewer lacks authority.
+- Rejection must stop or quarantine downstream action; correction must preserve the original and record the change.
+
 ## Verification
 
 - Reviewer authority and acceptance criteria are unambiguous.
