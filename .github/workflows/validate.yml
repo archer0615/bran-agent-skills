@@ -1,0 +1,22 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate skill structure
+        shell: pwsh
+        run: ./scripts/validate-skills.ps1
+      - name: Validate routing scenarios
+        shell: pwsh
+        run: ./scripts/validate-scenarios.ps1
+      - name: Validate library boundaries
+        shell: pwsh
+        run: ./scripts/validate-library.ps1

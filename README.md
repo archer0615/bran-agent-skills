@@ -106,6 +106,7 @@ Skills 檔案維持英文，方便跨環境維護；Codex 對使用者的提問�
 ```powershell
 .\scripts\validate-skills.ps1
 .\scripts\validate-scenarios.ps1
+.\scripts\validate-library.ps1
 ```
 
 ## 跨電腦延續
@@ -180,6 +181,8 @@ Codex 會先判斷指令是否已經可以直接執行：
 ## 路由情境測試
 
 代表性路由情境與預期 Skill 順序收錄於 [`references/skill-scenarios.md`](references/skill-scenarios.md)，目前涵蓋 9 條情境，可用來檢查新增或修改 Skill 後的實際行為。
+
+跨 Skill 的邊界檢查由 `scripts/validate-library.ps1` 執行；發布前檢查清單請參閱 [`references/release-checklist.md`](references/release-checklist.md)。GitHub Actions 會在 `main` push 與 Pull Request 時自動執行三項驗證。
 
 Windows PowerShell 可執行：
 

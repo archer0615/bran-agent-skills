@@ -9,3 +9,4 @@
 - Updated continuation documentation with current status and next-step priorities.
 - Completed the cross-Skill decision-rule consistency pass.
 - Added routing scenarios for project bootstrap, Skill library maintenance, and context handoff.
+- Added library-boundary validation, stronger scenario structure checks, GitHub Actions validation, and a release checklist.

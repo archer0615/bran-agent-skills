@@ -6,7 +6,7 @@ Get-ChildItem (Join-Path $root 'skills') -Recurse -Filter SKILL.md | ForEach-Obj
   if ($text -notmatch '(?m)^name:\s*([^\r\n]+)') {$errors += "$($_.FullName): missing name"; return}
   if ($Matches[1].Trim() -ne $dir) {$errors += "$($_.FullName): name mismatch"}
   if ($text -notmatch '(?m)^description:\s*\S+') {$errors += "$($_.FullName): missing description"}
-  foreach ($section in @('Use when','Procedure','Verification','Output')) { if ($text -notmatch "(?m)^## $section\s*$") {$errors += "$($_.FullName): missing section '$section'"} }
+  foreach ($section in @('Use when','Procedure','Decision rules','Verification','Output')) { if ($text -notmatch "(?m)^## $section\s*$") {$errors += "$($_.FullName): missing section '$section'"} }
   if ($seen.ContainsKey($dir)) {$errors += "duplicate skill: $dir"} else {$seen[$dir]=$true}
 }
 if ($errors.Count) {$errors | Write-Error; exit 1}; Write-Output "Validated $($seen.Count) skills."

@@ -32,6 +32,9 @@
 - 最新遠端同步 commit：以 `git log` 與 `git status` 的實際結果為準
 - 已建立代表性路由情境：`references/skill-scenarios.md`
 - 已建立情境路由結構檢查：`scripts/validate-scenarios.ps1`
+- 已建立跨 Skill 邊界檢查：`scripts/validate-library.ps1`
+- 已建立 GitHub Actions 驗證流程：`.github/workflows/validate.yml`
+- 已建立發布檢查清單：`references/release-checklist.md`
 
 ## 三、目前 Skills
 
@@ -167,4 +170,4 @@ Windows PowerShell：
 
 1. 以 9 條代表性情境測試主要路由與閉環流程。
 2. 持續檢查新增 Skill 是否造成重複能力或路由衝突。
-3. 由使用者決定是否 commit／push；除非明確要求，不要自行進行 remote 操作。
+3. 依 `references/release-checklist.md` 進行版本化與發布。
