@@ -1,5 +1,8 @@
 ---
 name: closed-loop-task-solver
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when a task needs inspect, execute, verify, and correction-loop discipline.
 ---
 
@@ -8,6 +11,14 @@ description: Use when a task needs inspect, execute, verify, and correction-loop
 ## Use when
 
 Use this skill when a task requires coordinated inspection, implementation or action, verification, and correction until the acceptance criteria are met.
+
+## Inputs
+
+- Required: Objective, acceptance criteria, constraints, current state, and available evidence.
+- Optional: Selected execution Skill, files, commands, baseline, risks, and correction history.
+- Preconditions: The task can be decomposed into inspect, execute, verify, and correction stages.
+- Missing information: Stop at the affected stage and record the blocker when acceptance cannot be evaluated.
+- Output artifact: Completion report with actions, evidence, corrections, final state, and unresolved blockers.
 
 ## Procedure
 
@@ -26,6 +37,7 @@ Use this skill when a task requires coordinated inspection, implementation or ac
 - Do not broaden scope merely because an adjacent improvement is visible.
 - Escalate to `implementation-validator` when the main work is complete and only targeted validation remains.
 - Escalate to `quality-gate` when readiness, compatibility, security, or delivery completeness requires a final review.
+- Own the inspect-execute-verify-correct loop after routing; do not replace `personal-ai-task-router` when capability selection is the primary problem.
 - Never claim completion from an unrun command or from an incomplete acceptance check.
 
 ## Verification

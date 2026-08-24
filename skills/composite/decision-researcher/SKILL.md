@@ -1,5 +1,8 @@
 ---
 name: decision-researcher
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when a decision needs criteria, evidence, alternatives, and a recommendation.
 ---
 
@@ -8,6 +11,14 @@ description: Use when a decision needs criteria, evidence, alternatives, and a r
 ## Use when
 
 Use this skill when a decision needs explicit criteria, evidence, alternatives, trade-offs, and a recommendation rather than a simple factual answer.
+
+## Inputs
+
+- Required: Decision question, decision owner or audience, constraints, and decision horizon.
+- Optional: Candidate options, existing evidence, budget, risk tolerance, and deadline.
+- Preconditions: Decision criteria can be defined or the missing criteria can be clarified.
+- Missing information: Label assumptions and confidence; escalate material high-impact gaps for review.
+- Output artifact: Decision brief with criteria, evidence, comparison, recommendation, confidence, risks, and next action.
 
 ## Procedure
 
@@ -27,6 +38,7 @@ Use this skill when a decision needs explicit criteria, evidence, alternatives, 
 - Escalate legal, security, financial, medical, or production-impact questions to appropriate human review.
 - Include defer, do-nothing, or reversible experiment options when they are credible alternatives.
 - If the recommendation changes under reasonable weights or evidence interpretations, present a conditional recommendation instead of a single winner.
+- Use `option-comparison` when the primary missing artifact is a normalized multi-option comparison; own the final recommendation after comparable evidence is available.
 
 ## Verification
 

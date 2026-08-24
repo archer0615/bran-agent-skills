@@ -1,5 +1,8 @@
 ---
 name: quality-gate
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when reviewing whether an artifact or change is ready to deliver.
 ---
 
@@ -8,6 +11,14 @@ description: Use when reviewing whether an artifact or change is ready to delive
 ## Use when
 
 Use this skill before delivering an artifact, implementation, documentation change, or configuration update when readiness must be judged against scope, quality, safety, and evidence.
+
+## Inputs
+
+- Required: Final artifact or change, acceptance criteria, project rules, and verification evidence.
+- Optional: Risk classification, reviewer requirements, baseline, release constraints, and known limitations.
+- Preconditions: Work is reviewable; incomplete work must be marked not ready.
+- Missing information: Classify missing evidence as unverified and do not approve by assumption.
+- Output artifact: Ready/not-ready decision with evidence, gaps, risks, owners, and follow-up.
 
 ## Procedure
 
@@ -26,6 +37,8 @@ Use this skill before delivering an artifact, implementation, documentation chan
 - Do not approve a change because a single check passed when required checks were skipped or blocked.
 - Distinguish defects from optional improvements; do not expand the requested scope during the gate.
 - Never expose secret values or claim verification that was not performed.
+- Own the final ready/not-ready judgment; consume `implementation-validator` evidence rather than duplicating its test procedure.
+- Return failed criteria and required corrective checks to the implementation owner or `implementation-validator`.
 
 ## Verification
 

@@ -1,5 +1,8 @@
 ---
 name: scenario-planning
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when exploring plausible futures, uncertainty, or decisions that must remain robust across changing conditions.
 ---
 
@@ -8,6 +11,14 @@ description: Use when exploring plausible futures, uncertainty, or decisions tha
 ## Use when
 
 Use this skill when exploring plausible futures, uncertainty, or decisions that must remain robust across changing conditions.
+
+## Inputs
+
+- Required: Focal question, decision horizon, baseline, scope, and decisions that must remain viable.
+- Optional: Trends, driving forces, uncertainties, constraints, signals, and existing options.
+- Preconditions: Scenarios are exploratory, not disguised predictions.
+- Missing information: State assumptions and limit conclusions when evidence or horizon is insufficient.
+- Output artifact: Distinct scenarios, implications, signals, robust options, triggers, and review cadence.
 
 ## Procedure
 

@@ -12,9 +12,10 @@ foreach($path in @((Join-Path $root 'README.md'),(Join-Path $root 'references/co
   if($text -notmatch "$skillCount 個 Skills") {$errors += "${path}: expected Skill count $skillCount"}
   if($text -notmatch "$scenarioCount 條") {$errors += "${path}: expected scenario count $scenarioCount"}
 }
-if($caseCount -lt 5) {$errors += "Scenario JSON has fewer than 5 cases: $caseCount"}
+if($caseCount -lt 10) {$errors += "Scenario JSON has fewer than 10 cases: $caseCount"}
 if($caseCount -ne $caseDocCount) {$errors += "Scenario JSON/Markdown case count mismatch: $caseCount vs $caseDocCount"}
-foreach($case in $cases) { if($null -eq $case.route -or @($case.route).Count -eq 0) {$errors += "Scenario case has no route: $($case.id)"} }
+foreach($case in $cases) { if(($null -eq $case.route -or @($case.route).Count -eq 0) -and $case.id -ne 'direct-answer') {$errors += "Scenario case has no route: $($case.id)"} }
+if(-not (Test-Path (Join-Path $root 'references/capability-matrix.md'))) {$errors += 'Missing capability matrix'}
 $workflow=Get-Content -Raw (Join-Path $root '.github/workflows/validate.yml')
 foreach($script in @('validate-skills.ps1','validate-scenarios.ps1','validate-library.ps1','validate-powershell.ps1','validate-markdown.ps1','validate-consistency.ps1')) {
   if($workflow -notmatch [regex]::Escape($script)) {$errors += "CI does not run $script"}

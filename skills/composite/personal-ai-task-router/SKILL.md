@@ -1,5 +1,8 @@
 ---
 name: personal-ai-task-router
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use to route a personal AI request to the narrowest matching capability.
 ---
 
@@ -8,6 +11,14 @@ description: Use to route a personal AI request to the narrowest matching capabi
 ## Use when
 
 Use this skill when a request may match more than one capability, or when the user does not name a skill and the correct workflow must be selected from the request and repository context.
+
+## Inputs
+
+- Required: User request, current repository or conversation context, and applicable project instructions.
+- Optional: Acceptance criteria, preferred output, deadline, risk constraints, or named capabilities.
+- Preconditions: The request can be classified and candidate skills can be inspected.
+- Missing information: Ask only when the gap would materially change the route; otherwise state an assumption.
+- Output artifact: An ordered route with one primary owner, supporting handoffs, and verification criteria.
 
 ## Procedure
 
@@ -32,6 +43,8 @@ Use this skill when a request may match more than one capability, or when the us
 - Use at most one primary execution owner per workstream; supporting Skills must have an explicit input and handoff output.
 - For high-impact, irreversible, external, privacy-sensitive, or security-sensitive work, include governance or human review before execution.
 - When route confidence is low, state the competing candidates and the evidence or clarification needed to choose safely.
+- Own capability selection and sequencing; hand off execution to exactly one primary owner with explicit supporting inputs and return conditions.
+- Do not perform the execution procedure of a selected Skill merely because routing identified it.
 
 ## Verification
 

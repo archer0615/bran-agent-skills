@@ -1,5 +1,8 @@
 ---
 name: existing-project-takeover
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when taking over an unfamiliar repository or codebase.
 ---
 
@@ -8,6 +11,14 @@ description: Use when taking over an unfamiliar repository or codebase.
 ## Use when
 
 Use this skill when taking over an unfamiliar repository, codebase, service, or partially completed change and the existing architecture and conventions must be understood before editing.
+
+## Inputs
+
+- Required: Repository path or workspace and requested investigation or change.
+- Optional: Known symptoms, target subsystem, preferred commands, or issue references.
+- Preconditions: Repository files can be inspected without changing them.
+- Missing information: Build a bounded project overview first; do not guess an implementation target.
+- Output artifact: Architecture and workflow summary, risks, evidence, and safe next route.
 
 ## Procedure
 

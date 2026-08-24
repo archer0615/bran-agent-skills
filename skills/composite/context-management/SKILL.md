@@ -1,5 +1,8 @@
 ---
 name: context-management
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when a task has a long conversation, many files, competing instructions, or risk of losing important context.
 ---
 
@@ -8,6 +11,14 @@ description: Use when a task has a long conversation, many files, competing inst
 ## Use when
 
 Use this skill when a task has a long conversation, many files, competing instructions, handoffs, or a meaningful risk of losing decisions and evidence.
+
+## Inputs
+
+- Required: Current objective, scope, decisions, evidence, files, status, and next action.
+- Optional: Prior handoff, conversation history, blockers, deadlines, and verification logs.
+- Preconditions: Task state can be reconstructed from authoritative sources.
+- Missing information: Mark facts unknown or unverified; do not fill gaps with transcript inference.
+- Output artifact: Compact state or handoff with verified status, open questions, files, evidence, blockers, and resume action.
 
 ## Procedure
 

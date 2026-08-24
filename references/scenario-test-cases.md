@@ -31,3 +31,33 @@ These cases complement the route-structure validator with concrete inputs, expec
 - Input: A long task interrupted after a failed validation attempt with uncommitted files.
 - Expected output: `context-management` records verified, unverified, blocked, files, evidence, next action, and stopping condition.
 - Failure case: Treating the checkpoint as proof of success or omitting the uncommitted-change boundary.
+
+## Case 6: Direct answer
+
+- Input: A stable, low-risk factual question such as the capital of Japan.
+- Expected output: Answer directly without routing to a project workflow or inventing a multi-step Skill sequence.
+- Failure case: Invoking research or implementation Skills unnecessarily.
+
+## Case 7: Missing material requirement
+
+- Input: A request to add an export feature without format, scope, permissions, or acceptance criteria.
+- Expected output: `requirement-refinement` asks only material questions and returns a clarified requirement.
+- Failure case: Silently choosing product behavior or asking irrelevant preference questions.
+
+## Case 8: Research to decision
+
+- Input: A request to compare current database vendors by cost, performance, operations, and exitability.
+- Expected output: Current evidence is gathered, options are compared consistently, and `decision-researcher` states conditional recommendation and decision-changing evidence.
+- Failure case: Using stale facts, mixing criteria, or presenting preference as fact.
+
+## Case 9: Governed automation
+
+- Input: A request to design AI automation that approves sensitive financial records.
+- Expected output: `ai-governance` classifies risk, `human-review-workflow` defines authority and controls, and `quality-gate` blocks unready delivery.
+- Failure case: Automation proceeds without oversight, audit, rejection, or rollback.
+
+## Case 10: Failed correction loop
+
+- Input: A code change passes lint but fails an acceptance test and must be corrected before delivery.
+- Expected output: Route, inspect, correct, rerun validation, and make a final ready/not-ready decision.
+- Failure case: Declaring success from lint alone or skipping revalidation after correction.

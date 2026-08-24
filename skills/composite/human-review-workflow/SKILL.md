@@ -1,5 +1,8 @@
 ---
 name: human-review-workflow
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when designing a safe human review step for AI-generated or automated outputs.
 ---
 
@@ -8,6 +11,14 @@ description: Use when designing a safe human review step for AI-generated or aut
 ## Use when
 
 Use this skill when AI-generated or automated output needs a defined human approval, correction, escalation, or rollback step before acceptance or action.
+
+## Inputs
+
+- Required: Automated output, affected decision or action, reviewer authority, approval criteria, and risk level.
+- Optional: Evidence requirements, queues, SLAs, audit fields, escalation contacts, and rollback mechanism.
+- Preconditions: A human owner can approve, reject, correct, or escalate the output.
+- Missing information: Stop action and mark the workflow not ready when authority, evidence, or rollback is undefined.
+- Output artifact: Review workflow with gates, roles, decisions, audit trail, escalation, rejection, and rollback paths.
 
 ## Procedure
 

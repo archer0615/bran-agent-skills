@@ -1,5 +1,8 @@
 ---
 name: sop-generator
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when turning a repeatable task or informal know-how into a clear, handoff-ready SOP.
 ---
 
@@ -8,6 +11,14 @@ description: Use when turning a repeatable task or informal know-how into a clea
 ## Use when
 
 Use this skill when turning a repeatable task or informal know-how into a clear, handoff-ready standard operating procedure.
+
+## Inputs
+
+- Required: Source process or evidence, audience, purpose, scope, inputs, tools, and completion criteria.
+- Optional: Owner, frequency, permissions, examples, exceptions, rollback steps, and version history.
+- Preconditions: The process is repeatable enough to distinguish confirmed steps from assumptions.
+- Missing information: Mark unknown steps and escalation points; do not convert guesses into mandatory procedure.
+- Output artifact: Versioned SOP with preconditions, numbered steps, decisions, exceptions, checks, recovery, and ownership.
 
 ## Procedure
 

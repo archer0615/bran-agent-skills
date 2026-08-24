@@ -1,5 +1,8 @@
 ---
 name: skill-curator
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use to review, deduplicate, and maintain a skill library.
 ---
 
@@ -8,6 +11,14 @@ description: Use to review, deduplicate, and maintain a skill library.
 ## Use when
 
 Use this skill to review, deduplicate, classify, improve, retire, or maintain a skill library.
+
+## Inputs
+
+- Required: Skill library, authoring rules, validation tools, and review objective.
+- Optional: Known overlaps, route scenarios, change history, categories, and compatibility constraints.
+- Preconditions: All in-scope Skills and related documentation can be inventoried.
+- Missing information: Report uncertain overlap or stale references instead of deleting or merging silently.
+- Output artifact: Inventory, findings, boundary decisions, approved changes, validation evidence, and remaining gaps.
 
 ## Procedure
 

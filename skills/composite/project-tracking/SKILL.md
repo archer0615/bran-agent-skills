@@ -1,5 +1,8 @@
 ---
 name: project-tracking
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when turning project updates into a concise status report, risk register, or follow-up plan.
 ---
 
@@ -8,6 +11,14 @@ description: Use when turning project updates into a concise status report, risk
 ## Use when
 
 Use this skill when turning project updates or repository evidence into a concise status report, risk register, action list, or follow-up plan.
+
+## Inputs
+
+- Required: Current updates, completed work, open work, risks, blockers, and evidence.
+- Optional: Owners, deadlines, dependencies, milestones, baseline plan, and previous status report.
+- Preconditions: Status claims can be traced to updates or repository evidence.
+- Missing information: Label unverified status and assign an owner or follow-up to close the gap.
+- Output artifact: Status summary, risk register, action list, dependencies, and next checkpoint.
 
 ## Procedure
 

@@ -1,5 +1,8 @@
 ---
 name: implementation-validator
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use after implementation to run targeted checks and report evidence.
 ---
 
@@ -8,6 +11,14 @@ description: Use after implementation to run targeted checks and report evidence
 ## Use when
 
 Use this skill after implementation or configuration changes when targeted evidence is needed to determine whether the requested behavior works and whether regressions were introduced.
+
+## Inputs
+
+- Required: Final changed state, acceptance criteria, project instructions, and available test or build commands.
+- Optional: Baseline results, affected paths, risk assessment, and environment limitations.
+- Preconditions: Implementation is complete enough to validate and final files are accessible.
+- Missing information: Mark unavailable checks as unverified; do not infer success from inspection alone.
+- Output artifact: Validation report with commands, evidence, acceptance mapping, failures, limitations, and readiness.
 
 ## Procedure
 
@@ -28,6 +39,7 @@ Use this skill after implementation or configuration changes when targeted evide
 - Keep secrets, credentials, private data, and machine-specific paths out of evidence.
 - Prefer a baseline comparison whenever the repository or prior artifact is available.
 - Treat a blocked dependency, unavailable environment, or skipped test as `unverified`, not `pass`.
+- Own technical execution checks and evidence; hand final evidence, limitations, and unresolved risks to `quality-gate` for delivery readiness.
 - Escalate from targeted to broader checks when the change affects public contracts, data, security, or multiple execution paths.
 
 ## Verification

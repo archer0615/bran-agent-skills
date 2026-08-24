@@ -1,5 +1,8 @@
 ---
 name: ai-governance
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when establishing practical rules, risks, ownership, and review controls for AI use in a team or project.
 ---
 
@@ -8,6 +11,14 @@ description: Use when establishing practical rules, risks, ownership, and review
 ## Use when
 
 Use this skill when defining practical governance for AI use, including risk classification, ownership, data handling, oversight, review, and incident response.
+
+## Inputs
+
+- Required: AI use case, users, systems, data, outputs, affected people, and operational context.
+- Optional: Existing policy, risk framework, owners, incidents, retention rules, and review cadence.
+- Preconditions: The use case and accountable decision owner can be identified.
+- Missing information: Mark unknown risk factors and escalate legal, security, or ethical gaps for qualified review.
+- Output artifact: Risk classification, control checklist, ownership model, review process, and unresolved questions.
 
 ## Procedure
 

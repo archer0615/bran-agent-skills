@@ -1,5 +1,8 @@
 ---
 name: prompt-skill-publisher
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use to turn an approved prompt or skill into a validated published artifact.
 ---
 
@@ -8,6 +11,14 @@ description: Use to turn an approved prompt or skill into a validated published 
 ## Use when
 
 Use this skill when turning an approved prompt, workflow, or skill into a validated artifact ready for local distribution or an explicitly requested publication step.
+
+## Inputs
+
+- Required: Approved source artifact, target format, audience, metadata contract, and intended destination.
+- Optional: Template, version note, publication approval, compatibility constraints, and release checklist.
+- Preconditions: Content approval is separate from technical validation and publication authorization.
+- Missing information: Leave the artifact local and validated; do not publish when target or approval is unclear.
+- Output artifact: Validated artifact and publishing report with approval status, checks, and follow-up.
 
 ## Procedure
 

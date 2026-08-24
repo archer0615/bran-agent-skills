@@ -1,5 +1,8 @@
 ---
 name: conversation-skill-miner
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use to extract reusable procedures or skills from a conversation.
 ---
 
@@ -8,6 +11,14 @@ description: Use to extract reusable procedures or skills from a conversation.
 ## Use when
 
 Use this skill to extract a repeatable procedure, decision rule, prompt pattern, or skill candidate from a conversation or task history.
+
+## Inputs
+
+- Required: Conversation or task history and extraction goal.
+- Optional: Related repository Skills, target audience, privacy constraints, and desired artifact type.
+- Preconditions: Source content can be separated into durable procedure and one-off context.
+- Missing information: Preserve unresolved claims as unverified; do not infer reusable rules from a single anecdote.
+- Output artifact: Mined pattern, reuse decision, draft procedure or Skill, overlap analysis, and validation criteria.
 
 ## Procedure
 

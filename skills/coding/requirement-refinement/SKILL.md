@@ -1,5 +1,8 @@
 ---
 name: requirement-refinement
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when a request needs explicit scope, constraints, and acceptance criteria.
 ---
 
@@ -8,6 +11,14 @@ description: Use when a request needs explicit scope, constraints, and acceptanc
 ## Use when
 
 Use this skill when a request is ambiguous about scope, constraints, expected behavior, priority, or acceptance criteria, and proceeding without clarification could materially change the result.
+
+## Inputs
+
+- Required: Original request and available project or domain context.
+- Optional: Existing behavior, examples, constraints, users, deadline, and known risks.
+- Preconditions: Ambiguity could change implementation, cost, safety, or acceptance.
+- Missing information: Ask focused questions only for material unknowns; record non-material assumptions.
+- Output artifact: Clarified requirements with scope, constraints, acceptance criteria, assumptions, and open questions.
 
 ## Procedure
 

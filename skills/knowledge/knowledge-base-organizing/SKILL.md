@@ -1,5 +1,8 @@
 ---
 name: knowledge-base-organizing
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when organizing scattered notes, documents, or links into a searchable and maintainable knowledge base.
 ---
 
@@ -8,6 +11,14 @@ description: Use when organizing scattered notes, documents, or links into a sea
 ## Use when
 
 Use this skill when organizing scattered notes, documents, or links into a searchable and maintainable knowledge base.
+
+## Inputs
+
+- Required: Source notes, documents, links, intended users, and retrieval goals.
+- Optional: Existing taxonomy, permissions, retention rules, authoritative sources, and migration constraints.
+- Preconditions: Sources can be inventoried and provenance retained.
+- Missing information: Preserve uncertainty, conflicts, and ownership gaps instead of silently merging sources.
+- Output artifact: Information architecture, naming and tagging rules, migration order, ownership, and maintenance cadence.
 
 ## Procedure
 

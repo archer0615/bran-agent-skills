@@ -1,5 +1,8 @@
 ---
 name: ai-playbook-maintainer
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use to maintain an AI playbook or capability website from repository truth.
 ---
 
@@ -8,6 +11,14 @@ description: Use to maintain an AI playbook or capability website from repositor
 ## Use when
 
 Use this skill when maintaining an AI playbook, capability catalog, documentation site, or routing index whose authoritative content comes from the repository.
+
+## Inputs
+
+- Required: Repository sources of truth and the playbook or catalog surface to maintain.
+- Optional: Requested update, audience, generated outputs, publication destination, and acceptance criteria.
+- Preconditions: Source files and affected derived surfaces can be inspected.
+- Missing information: Report drift or unsupported claims instead of inventing source content.
+- Output artifact: Synchronized maintenance report with changed sources, affected surfaces, validation, and remaining drift.
 
 ## Procedure
 

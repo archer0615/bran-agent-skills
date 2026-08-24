@@ -1,5 +1,8 @@
 ---
 name: option-comparison
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use when comparing products, designs, vendors, or implementation choices against explicit criteria.
 ---
 
@@ -8,6 +11,14 @@ description: Use when comparing products, designs, vendors, or implementation ch
 ## Use when
 
 Use this skill when comparing products, designs, vendors, tools, or implementation choices against explicit decision criteria.
+
+## Inputs
+
+- Required: Options, decision question, owner, constraints, and comparison criteria.
+- Optional: Weights, budget, evidence sources, time horizon, risk tolerance, and pilot constraints.
+- Preconditions: At least two realistic options or an explicit baseline can be identified.
+- Missing information: Mark unavailable values unknown and state assumptions; do not invent scores.
+- Output artifact: Comparable matrix with criteria, evidence, trade-offs, sensitivity, recommendation conditions, and gaps.
 
 ## Procedure
 
@@ -27,6 +38,8 @@ Use this skill when comparing products, designs, vendors, tools, or implementati
 - Include total cost, operational burden, exitability, and downside risk where relevant.
 - Treat a high score as insufficient when evidence quality is weak or the option violates a must-have.
 - Prefer conditional recommendations when the ranking changes under plausible weights or assumptions.
+- Own the comparison matrix and normalized criteria; hand off the matrix, evidence gaps, and sensitivity findings to `decision-researcher` for the final decision brief.
+- Do not use this Skill alone when the primary need is evidence gathering without comparable options.
 
 ## Verification
 

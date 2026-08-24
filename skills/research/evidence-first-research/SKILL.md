@@ -1,5 +1,8 @@
 ---
 name: evidence-first-research
+version: 1.1
+status: active
+last_reviewed: 2026-08-24
 description: Use for research requiring current, traceable, source-backed conclusions.
 ---
 
@@ -8,6 +11,14 @@ description: Use for research requiring current, traceable, source-backed conclu
 ## Use when
 
 Use this skill for research requiring current, niche, high-impact, traceable, or source-backed conclusions.
+
+## Inputs
+
+- Required: Research question, scope, freshness requirement, and intended decision or audience.
+- Optional: Preferred sources, date range, jurisdiction, inclusion criteria, confidence threshold, and format.
+- Preconditions: Claims can be tested against authoritative or traceable sources.
+- Missing information: Narrow the question or state evidence limitations; do not present unsupported conclusions.
+- Output artifact: Source-backed findings with citations, dates, confidence, assumptions, gaps, and implications.
 
 ## Procedure
 
