@@ -6,6 +6,8 @@
 
 ## Allowed transitions
 
+The machine-readable source is `orchestrator.state_machine.TRANSITIONS`; each rule carries `from`, `to`, `owner`, `required_context`, and `terminal`. Runtime writes use its fail-closed validator and append an event to `.orchestrator/events.jsonl`.
+
 | From | To | Owner | Required condition |
 |---|---|---|---|
 | NEW | PLANNING | Controller | valid Goal |

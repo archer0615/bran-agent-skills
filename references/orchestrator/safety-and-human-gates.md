@@ -6,6 +6,8 @@ Pause in `NEEDS_HUMAN` before destructive operations, production data mutation, 
 
 ## Git boundary
 
+Phase 03A persists gate decisions as `.orchestrator/approvals/<gate-id>.json`. An approval is single-use and is invalid when its gate, task, scope, repository revision, or expiry does not match.
+
 Default permissions are inspect, modify working tree, run checks and generate diff. `allow_commit`, `allow_push`, `allow_pr`, and `allow_merge` default to `false`; deploy/release is always gated separately. No automatic history rewrite. Dirty unrelated changes are preserved and reported; the controller must not include them in its change set.
 
 ## Evidence and review

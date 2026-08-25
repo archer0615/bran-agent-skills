@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Human Gate Approval",
+  "type": "object",
+  "required": ["schema_version", "gate_id", "goal_id", "plan_id", "task_id", "repository_revision", "status", "actor", "reason", "created_at", "decided_at", "expires_at", "scope"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0"}, "gate_id": {"type": "string"}, "goal_id": {"type": "string"}, "plan_id": {"type": ["string", "null"]}, "task_id": {"type": "string"}, "repository_revision": {"type": "string"}, "status": {"enum": ["PENDING", "APPROVED", "REJECTED", "EXPIRED", "CANCELLED"]}, "actor": {"type": "string"}, "reason": {"type": "string"}, "created_at": {"type": "string"}, "decided_at": {"type": ["string", "null"]}, "expires_at": {"type": "string"}, "scope": {"type": "array", "items": {"type": "string"}}
+  }
+}

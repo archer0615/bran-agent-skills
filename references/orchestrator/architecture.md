@@ -28,6 +28,12 @@ The preferred future layout is:
 ```text
 .orchestrator/
   state.json                 # committed checkpoint, no secrets
+  state.backup.json          # last valid checkpoint
+  events.jsonl               # append-only transition audit
+  current-plan.json          # latest plan artifact
+  tasks/                     # task artifacts
+  runs/                      # bounded execution/review artifacts
+  approvals/                 # persisted human gates
   current-plan.json          # committed plan snapshot
   tasks/<task-id>.json       # committed task contracts/results
   runs/<run-id>/              # local or ignored evidence/logs

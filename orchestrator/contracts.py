@@ -34,6 +34,15 @@ _SCHEMAS: dict[str, dict[str, Any]] = {
         "allowed": {"schema_version", "task_id", "decision", "acceptance_results", "issues", "required_corrections", "risk_findings", "next_action"},
         "enums": {"decision": {"PASS", "REPLAN", "BLOCKED", "NEEDS_HUMAN"}},
     },
+    "approval": {
+        "required": {"schema_version", "gate_id", "goal_id", "plan_id", "task_id", "repository_revision", "status", "actor", "reason", "created_at", "decided_at", "expires_at", "scope"},
+        "allowed": {"schema_version", "gate_id", "goal_id", "plan_id", "task_id", "repository_revision", "status", "actor", "reason", "created_at", "decided_at", "expires_at", "scope"},
+        "enums": {"status": {"PENDING", "APPROVED", "REJECTED", "EXPIRED", "CANCELLED"}},
+    },
+    "transition_event": {
+        "required": {"event_id", "timestamp", "from", "to", "actor", "reason", "goal_id", "plan_id", "task_id", "repository_revision"},
+        "allowed": {"event_id", "timestamp", "from", "to", "actor", "reason", "goal_id", "plan_id", "task_id", "repository_revision"},
+    },
 }
 
 

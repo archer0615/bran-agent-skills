@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Transition Event",
+  "type": "object",
+  "required": ["event_id", "timestamp", "from", "to", "actor", "reason", "goal_id", "plan_id", "task_id", "repository_revision"],
+  "additionalProperties": false,
+  "properties": {"event_id": {"type": "string"}, "timestamp": {"type": "string"}, "from": {"type": "string"}, "to": {"type": "string"}, "actor": {"type": "string"}, "reason": {"type": "string"}, "goal_id": {"type": ["string", "null"]}, "plan_id": {"type": ["string", "null"]}, "task_id": {"type": ["string", "null"]}, "repository_revision": {"type": ["string", "null"]}}
+}

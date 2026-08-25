@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Orchestrator State Machine",
+  "type": "object",
+  "required": ["states", "transitions"],
+  "additionalProperties": false,
+  "properties": {"states": {"type": "array", "items": {"type": "string"}}, "transitions": {"type": "array", "items": {"type": "object", "required": ["from", "to", "owner", "required_context", "terminal"], "additionalProperties": false, "properties": {"from": {"type": "string"}, "to": {"type": "string"}, "owner": {"type": "string"}, "required_context": {"type": "array", "items": {"type": "string"}}, "terminal": {"type": "boolean"}}}}}
+}
