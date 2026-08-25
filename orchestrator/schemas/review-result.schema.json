@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"Review Result","type":"object","required":["schema_version","task_id","decision","acceptance_results","issues","required_corrections","risk_findings","next_action"],"additionalProperties":false}

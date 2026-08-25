@@ -2,6 +2,12 @@
 
 This repository is the personal AI capability source of truth for Codex.
 
+## Canonical repository root
+
+- This directory is the canonical working repository for this project.
+- Codex tasks for `bran-agent-skills` must use the repository root containing this file as the Git working tree.
+- Do not use or synchronize a second clone automatically; if another clone is detected, report the path difference before modifying files.
+
 ## Operating model
 
 Follow: `Input → Route → Inspect → Execute → Verify → Correct if required → Output`.

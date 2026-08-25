@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"Execution Result","type":"object","required":["schema_version","task_id","status","changed_files","commands_run","verification_results","known_issues","blocked_reason","evidence"],"additionalProperties":false}
