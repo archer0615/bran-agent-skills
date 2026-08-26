@@ -6,6 +6,8 @@ import subprocess
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+from .security import validate_command
+
 
 @dataclass(frozen=True)
 class CommandEvidence:
@@ -15,6 +17,7 @@ class CommandEvidence:
 
 
 def run_verification(root: str | Path, command: list[str], *, timeout_seconds: int = 300) -> CommandEvidence:
+    validate_command(command)
     try:
         result = subprocess.run(command, cwd=Path(root), check=False, capture_output=True, text=True, timeout=timeout_seconds)
     except subprocess.TimeoutExpired as exc:

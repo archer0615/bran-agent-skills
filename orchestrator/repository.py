@@ -43,6 +43,23 @@ class RepositoryAdapter:
             instructions=instructions,
         )
 
+    def diff_patch(self) -> str:
+        """Return the current unstaged patch; empty when Git is unavailable."""
+        return self._git_output("diff", "--no-ext-diff", "--binary")
+
+    def baseline(self) -> RepositorySnapshot:
+        """Capture a named pre-execution snapshot for later comparison."""
+        return self.inspect()
+
+    def compare(self, baseline: RepositorySnapshot) -> dict[str, object]:
+        current = self.inspect()
+        return {
+            "revision_changed": baseline.revision != current.revision,
+            "status_changed": baseline.status != current.status,
+            "diff_stat": current.diff_stat,
+            "changed_files": [line[3:] for line in current.status if len(line) > 3],
+        }
+
     def _git_output(self, *arguments: str) -> str:
         try:
             result = subprocess.run(
