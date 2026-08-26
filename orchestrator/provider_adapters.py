@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .security import redact, validate_command
+from .contracts import validate_artifact
 
 
 class ProviderError(RuntimeError):
@@ -48,3 +49,23 @@ class CodexCliExecutor:
         except subprocess.TimeoutExpired as exc:
             raise ProviderError("executor timed out") from exc
         return {"status": "completed" if result.returncode == 0 else "failed", "exit_code": result.returncode, "stdout": redact(result.stdout)[-4000:], "stderr": redact(result.stderr)[-4000:]}
+
+
+@dataclass
+class JsonPlanner:
+    provider: JsonHttpProvider
+
+    def create_plan(self, goal: dict) -> dict:
+        response = self.provider.request({"input": {"role": "planner", "goal": goal}})
+        plan = response.get("plan", response)
+        return validate_artifact("plan", plan)
+
+
+@dataclass
+class JsonReviewer:
+    provider: JsonHttpProvider
+
+    def review(self, task: dict, execution: dict) -> dict:
+        response = self.provider.request({"input": {"role": "reviewer", "task": task, "execution": execution}})
+        review = response.get("review", response)
+        return validate_artifact("review_result", review)

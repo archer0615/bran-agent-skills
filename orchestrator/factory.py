@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from .config import OrchestratorConfig
-from .provider_adapters import CodexCliExecutor, JsonHttpProvider, ProviderError
+from .provider_adapters import CodexCliExecutor, JsonHttpProvider, JsonPlanner, JsonReviewer, ProviderError
 from .providers import Executor, FakeExecutor, FakePlanner, FakeReviewer, Planner, Reviewer
 
 
