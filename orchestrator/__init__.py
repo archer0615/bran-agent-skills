@@ -6,6 +6,7 @@ from .state_store import StateConflictError, StateStore, StateValidationError
 from .state_machine import InvalidTransitionError, StateMachine
 from .gates import GateStore, GateValidationError
 from .artifacts import ArtifactStore, ArtifactValidationError
+from .session import ResumeError, Session
 
 __all__ = [
     "ContractValidationError",
@@ -20,5 +21,7 @@ __all__ = [
     "GateValidationError",
     "ArtifactStore",
     "ArtifactValidationError",
+    "Session",
+    "ResumeError",
     "validate_artifact",
 ]
