@@ -15,6 +15,8 @@ from .providers import FakeExecutor, FakePlanner, FakeReviewer
 from .repository import RepositoryAdapter
 from .state_store import StateStore
 from .verification import discover_commands
+from .config import OrchestratorConfig
+from .factory import build_providers
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -69,7 +71,8 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(gate, ensure_ascii=False))
         return 0
     if args.command == "doctor":
-        checks = {"repository": root.is_dir(), "orchestrator_directory": (root / ".orchestrator").is_dir(), "verification_commands": discover_commands(root)}
+        config = OrchestratorConfig.from_environment()
+        checks = {"repository": root.is_dir(), "orchestrator_directory": (root / ".orchestrator").is_dir(), "verification_commands": discover_commands(root), "providers": {"planner": config.planner_provider, "executor": config.executor_provider, "reviewer": config.reviewer_provider}}
         print(json.dumps(checks, ensure_ascii=False))
         return 0 if checks["repository"] else 1
     if args.command == "status":
@@ -89,7 +92,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "plan":
         print(json.dumps(FakePlanner().create_plan(goal), ensure_ascii=False))
         return 0
-    result = LoopController(RepositoryAdapter(root), store, FakePlanner(), FakeExecutor(), FakeReviewer()).run(goal, human_approved=args.approve_human_gate)
+    try:
+        planner, executor, reviewer = build_providers(OrchestratorConfig.from_environment())
+    except Exception as exc:
+        print(json.dumps({"error": str(exc)}, ensure_ascii=False))
+        return 1
+    result = LoopController(RepositoryAdapter(root), store, planner, executor, reviewer).run(goal, human_approved=args.approve_human_gate)
     print(json.dumps({"state": result.state, "task_id": result.task_id, "human_reason": result.human_reason}, ensure_ascii=False))
     return 0 if result.state == "COMPLETED" else 1
 

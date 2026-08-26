@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provider configuration",
+  "type": "object",
+  "required": ["planner_provider", "executor_provider", "reviewer_provider", "command_timeout_seconds", "max_execution_retries", "max_plan_revisions"],
+  "additionalProperties": false,
+  "properties": {
+    "planner_provider": {"enum": ["fake", "openai"]},
+    "executor_provider": {"enum": ["fake", "codex"]},
+    "reviewer_provider": {"enum": ["fake", "openai"]},
+    "command_timeout_seconds": {"type": "integer"},
+    "max_execution_retries": {"type": "integer"},
+    "max_plan_revisions": {"type": "integer"}
+  }
+}

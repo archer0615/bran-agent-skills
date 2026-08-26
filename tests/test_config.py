@@ -2,6 +2,8 @@ import os
 import unittest
 
 from orchestrator.config import OrchestratorConfig
+from orchestrator.factory import build_providers
+from orchestrator.provider_adapters import ProviderError
 
 
 class ConfigTests(unittest.TestCase):
@@ -20,6 +22,11 @@ class ConfigTests(unittest.TestCase):
                 os.environ.pop("BRAN_MAX_EXECUTION_RETRIES", None)
             else:
                 os.environ["BRAN_MAX_EXECUTION_RETRIES"] = old
+
+    def test_factory_defaults_to_fake_and_rejects_unwired_real_provider(self):
+        self.assertEqual(len(build_providers(OrchestratorConfig())), 3)
+        with self.assertRaises(ProviderError):
+            build_providers(OrchestratorConfig(planner_provider="openai"))
 
 
 if __name__ == "__main__":
