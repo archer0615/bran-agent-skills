@@ -18,10 +18,10 @@ from .verification import discover_commands
 
 
 def main(argv: list[str] | None = None) -> int:
-    if argv and argv[0] not in {"run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts", "validate", "doctor"}:
+    if argv and argv[0] not in {"run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts", "validate", "doctor", "tasks", "runs", "recover-lock"}:
         argv = ["run", *argv]
     parser = argparse.ArgumentParser(prog="bran-agent-orchestrate")
-    parser.add_argument("command", choices=["run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts", "validate", "doctor"], nargs="?", default="run")
+    parser.add_argument("command", choices=["run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts", "validate", "doctor", "tasks", "runs", "recover-lock"], nargs="?", default="run")
     parser.add_argument("repository")
     parser.add_argument("goal", nargs="?")
     parser.add_argument("--approve-human-gate", action="store_true")
@@ -37,7 +37,16 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(gates.list(), ensure_ascii=False))
         return 0
     if args.command == "artifacts":
-        print(json.dumps({"runs": artifacts.list_runs(), "state": store.load()}, ensure_ascii=False))
+        print(json.dumps({"runs": artifacts.list_runs(), "tasks": artifacts.list_tasks(), "state": store.load()}, ensure_ascii=False))
+        return 0
+    if args.command == "runs":
+        print(json.dumps(artifacts.list_runs(), ensure_ascii=False))
+        return 0
+    if args.command == "tasks":
+        print(json.dumps(artifacts.list_tasks(), ensure_ascii=False))
+        return 0
+    if args.command == "recover-lock":
+        print(json.dumps(store.recover_lock(explicit=True), ensure_ascii=False))
         return 0
     if args.command in {"approve", "reject"}:
         if not args.gate_id:

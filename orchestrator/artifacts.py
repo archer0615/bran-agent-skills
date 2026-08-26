@@ -89,3 +89,6 @@ class ArtifactStore:
     def list_runs(self) -> list[dict[str, Any]]:
         return [json.loads(path.read_text(encoding="utf-8")) for path in sorted(self.runs.glob("*.json"))]
 
+    def list_tasks(self) -> list[dict[str, Any]]:
+        return [json.loads(path.read_text(encoding="utf-8")) for path in sorted(self.tasks.glob("*.json"))]
+

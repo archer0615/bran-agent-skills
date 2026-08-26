@@ -14,8 +14,12 @@ class CommandEvidence:
     summary: str
 
 
-def run_verification(root: str | Path, command: list[str]) -> CommandEvidence:
-    result = subprocess.run(command, cwd=Path(root), check=False, capture_output=True, text=True)
+def run_verification(root: str | Path, command: list[str], *, timeout_seconds: int = 300) -> CommandEvidence:
+    try:
+        result = subprocess.run(command, cwd=Path(root), check=False, capture_output=True, text=True, timeout=timeout_seconds)
+    except subprocess.TimeoutExpired as exc:
+        output = ((exc.stdout or "") + (exc.stderr or "")).strip()
+        return CommandEvidence(" ".join(command), 124, (output + "\nverification timed out")[-2000:])
     output = (result.stdout + result.stderr).strip()
     return CommandEvidence(" ".join(command), result.returncode, output[-2000:])
 
