@@ -14,13 +14,14 @@ from .artifacts import ArtifactStore
 from .providers import FakeExecutor, FakePlanner, FakeReviewer
 from .repository import RepositoryAdapter
 from .state_store import StateStore
+from .verification import discover_commands
 
 
 def main(argv: list[str] | None = None) -> int:
-    if argv and argv[0] not in {"run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts"}:
+    if argv and argv[0] not in {"run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts", "validate", "doctor"}:
         argv = ["run", *argv]
     parser = argparse.ArgumentParser(prog="bran-agent-orchestrate")
-    parser.add_argument("command", choices=["run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts"], nargs="?", default="run")
+    parser.add_argument("command", choices=["run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts", "validate", "doctor"], nargs="?", default="run")
     parser.add_argument("repository")
     parser.add_argument("goal", nargs="?")
     parser.add_argument("--approve-human-gate", action="store_true")
@@ -48,6 +49,13 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         print(json.dumps(gate, ensure_ascii=False))
         return 0
+    if args.command == "validate":
+        print(json.dumps({"commands": discover_commands(root)}, ensure_ascii=False))
+        return 0
+    if args.command == "doctor":
+        checks = {"repository": root.is_dir(), "orchestrator_directory": (root / ".orchestrator").is_dir(), "verification_commands": discover_commands(root)}
+        print(json.dumps(checks, ensure_ascii=False))
+        return 0 if checks["repository"] else 1
     if args.command == "status":
         print(json.dumps(store.load() or {"state": "NEW"}, ensure_ascii=False))
         return 0

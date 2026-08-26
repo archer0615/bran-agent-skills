@@ -22,6 +22,20 @@ cd /path/to/bran-agent-skills
 
 ## 使用
 
+### Local Orchestrator prototype
+
+The provider-neutral local prototype is available through the Python module:
+
+```powershell
+python -m orchestrator.cli run . "<goal>"
+python -m orchestrator.cli plan . "<goal>"
+python -m orchestrator.cli status .
+python -m orchestrator.cli artifacts .
+python -m orchestrator.cli doctor .
+```
+
+It defaults to deterministic fake providers. Real providers must be configured explicitly and remain behind the Planner／Executor／Reviewer interfaces. Runtime state is stored under `.orchestrator/`, which is ignored by Git.
+
 直接用繁體中文描述工作即可，Codex 會依照對話與目前專案自動選擇 Skill：
 
 ```text
