@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from .config import OrchestratorConfig
 from .provider_adapters import CodexCliExecutor, CodexTaskExecutor, JsonHttpProvider, JsonPlanner, JsonReviewer, ProviderError
 from .providers import Executor, FakeExecutor, FakePlanner, FakeReviewer, Planner, Reviewer
 
 
-def build_providers(config: OrchestratorConfig) -> tuple[Planner, Executor, Reviewer]:
+def build_providers(config: OrchestratorConfig, *, repository_root: str | Path = ".") -> tuple[Planner, Executor, Reviewer]:
     names = (config.planner_provider, config.executor_provider, config.reviewer_provider)
     if all(name == "fake" for name in names):
         return FakePlanner(), FakeExecutor(), FakeReviewer()
@@ -18,5 +20,5 @@ def build_providers(config: OrchestratorConfig) -> tuple[Planner, Executor, Revi
     provider = JsonHttpProvider(config.provider_endpoint, config.provider_model, config.provider_api_key_env)
     planner = JsonPlanner(provider) if config.planner_provider == "openai" else FakePlanner()
     reviewer = JsonReviewer(provider) if config.reviewer_provider == "openai" else FakeReviewer()
-    executor = CodexTaskExecutor(".") if config.executor_provider == "codex" else FakeExecutor()
+    executor = CodexTaskExecutor(repository_root) if config.executor_provider == "codex" else FakeExecutor()
     return planner, executor, reviewer

@@ -15,6 +15,11 @@ class CodexExecutorTests(unittest.TestCase):
             self.assertEqual(result["task_id"], "t1")
             self.assertEqual(result["status"], "completed")
 
+    def test_executor_keeps_explicit_repository_root(self):
+        with tempfile.TemporaryDirectory() as directory:
+            executor = CodexTaskExecutor(directory)
+            self.assertEqual(str(executor.root), directory)
+
 
 if __name__ == "__main__":
     unittest.main()

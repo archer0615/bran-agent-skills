@@ -93,7 +93,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(FakePlanner().create_plan(goal), ensure_ascii=False))
         return 0
     try:
-        planner, executor, reviewer = build_providers(OrchestratorConfig.from_environment())
+        planner, executor, reviewer = build_providers(OrchestratorConfig.from_environment(), repository_root=root)
     except Exception as exc:
         print(json.dumps({"error": str(exc)}, ensure_ascii=False))
         return 1
