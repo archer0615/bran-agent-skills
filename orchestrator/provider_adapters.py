@@ -6,7 +6,7 @@ import json
 import os
 import subprocess
 import urllib.request
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from .security import redact, validate_command
@@ -49,6 +49,17 @@ class CodexCliExecutor:
         except subprocess.TimeoutExpired as exc:
             raise ProviderError("executor timed out") from exc
         return {"status": "completed" if result.returncode == 0 else "failed", "exit_code": result.returncode, "stdout": redact(result.stdout)[-4000:], "stderr": redact(result.stderr)[-4000:]}
+
+
+@dataclass
+class CodexTaskExecutor:
+    """Executor-protocol wrapper around the CLI adapter."""
+    root: str | Path
+    adapter: CodexCliExecutor = field(default_factory=CodexCliExecutor)
+
+    def execute(self, task: dict) -> dict:
+        result = self.adapter.execute(self.root, task["objective"])
+        return {"schema_version": "1.0", "task_id": task["task_id"], "status": result["status"], "changed_files": [], "commands_run": [{"command": " ".join(self.adapter.command), "exit_code": result["exit_code"], "summary": result["stderr"] or result["stdout"]}], "verification_results": [], "known_issues": [], "blocked_reason": None if result["status"] == "completed" else "Codex CLI failed", "evidence": [{"kind": "executor", "ref": "codex-cli"}]}
 
 
 @dataclass

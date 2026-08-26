@@ -14,6 +14,9 @@ class OrchestratorConfig:
     command_timeout_seconds: int = 300
     max_execution_retries: int = 2
     max_plan_revisions: int = 3
+    provider_endpoint: str = ""
+    provider_model: str = ""
+    provider_api_key_env: str = "OPENAI_API_KEY"
 
     @classmethod
     def from_environment(cls) -> "OrchestratorConfig":
@@ -30,4 +33,7 @@ class OrchestratorConfig:
             command_timeout_seconds=integer("BRAN_COMMAND_TIMEOUT_SECONDS", 300),
             max_execution_retries=integer("BRAN_MAX_EXECUTION_RETRIES", 2),
             max_plan_revisions=integer("BRAN_MAX_PLAN_REVISIONS", 3),
+            provider_endpoint=os.getenv("BRAN_PROVIDER_ENDPOINT", ""),
+            provider_model=os.getenv("BRAN_PROVIDER_MODEL", ""),
+            provider_api_key_env=os.getenv("BRAN_PROVIDER_API_KEY_ENV", "OPENAI_API_KEY"),
         )
