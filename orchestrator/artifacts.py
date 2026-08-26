@@ -9,6 +9,8 @@ import tempfile
 from pathlib import Path
 from typing import Any, Mapping
 
+from .contracts import ContractValidationError, validate_artifact
+
 
 class ArtifactValidationError(ValueError):
     pass
@@ -50,6 +52,17 @@ class ArtifactStore:
         data = dict(_redact(artifact))
         if data.get("schema_version") != "1.0":
             raise ArtifactValidationError("unsupported schema_version")
+        try:
+            if kind in {"goal", "plan", "task"}:
+                validate_artifact(kind, data)
+            elif kind == "run" and "kind" in data:
+                inner_key = {"execution": "execution", "review": "review"}.get(str(data.get("kind")))
+                inner_kind = {"execution": "execution_result", "review": "review_result"}.get(str(data.get("kind")))
+                if inner_kind is None or not isinstance(data.get(inner_key), Mapping):
+                    raise ContractValidationError("run must contain an execution or review artifact")
+                validate_artifact(inner_kind, data[inner_key])
+        except ContractValidationError as exc:
+            raise ArtifactValidationError(str(exc)) from exc
         if kind == "goal":
             path = self._path(self.root, artifact_id)
         elif kind == "plan":

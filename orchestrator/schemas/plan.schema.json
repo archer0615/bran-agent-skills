@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plan",
+  "type": "object",
+  "required": ["schema_version", "plan_id", "goal_id", "tasks", "dependencies", "sequence", "risks", "human_gates"],
+  "additionalProperties": false
+}

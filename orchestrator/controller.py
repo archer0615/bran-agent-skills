@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Callable
 
 from .events import TransitionLog
 from .artifacts import ArtifactStore
 from .gates import GateStore
 from .providers import Executor, Planner, Reviewer
 from .repository import RepositoryAdapter
+from .retry import wait_before_retry
 from .state_machine import StateMachine
 from .state_store import StateStore
 
@@ -23,10 +24,12 @@ class RunResult:
 
 
 class LoopController:
-    def __init__(self, repository: RepositoryAdapter, store: StateStore, planner: Planner, executor: Executor, reviewer: Reviewer, *, max_replans: int = 3, max_execution_retries: int = 2) -> None:
+    def __init__(self, repository: RepositoryAdapter, store: StateStore, planner: Planner, executor: Executor, reviewer: Reviewer, *, max_replans: int = 3, max_execution_retries: int = 2, retry_base_seconds: float = 0.0, retry_max_seconds: float = 30.0, sleeper: Callable[[float], None] | None = None) -> None:
         self.repository, self.store = repository, store
         self.planner, self.executor, self.reviewer = planner, executor, reviewer
         self.max_replans, self.max_execution_retries = max_replans, max_execution_retries
+        self.retry_base_seconds, self.retry_max_seconds = retry_base_seconds, retry_max_seconds
+        self.sleeper = sleeper or (lambda seconds: None)
         self.machine = StateMachine()
         self.transition_log = TransitionLog(self.store.path.parent / "events.jsonl")
         self.gates = GateStore(self.store.path.parent / "approvals")
@@ -85,6 +88,8 @@ class LoopController:
                             self._transition("EXECUTING", target, actor="Controller", context={**context, "reason": execution["blocked_reason"]}, reason=execution["blocked_reason"] or target, revision=revision)
                         return RunResult(target, task["task_id"], None, execution["blocked_reason"])
                     self._transition("EXECUTING", "VERIFYING", actor="Executor", context={**context, "execution_result": execution, "verification": True}, reason="retryable execution result", revision=revision)
+                    if attempt < self.max_execution_retries:
+                        wait_before_retry(attempt, sleeper=self.sleeper, base_seconds=self.retry_base_seconds, max_seconds=self.retry_max_seconds)
                 if execution is None or execution["status"] != "completed":
                     self._transition("VERIFYING", "FAILED", actor="Controller", context={**context, "reason": "execution budget exhausted"}, reason="execution budget exhausted", revision=revision)
                     return RunResult("FAILED", task["task_id"], None, "execution budget exhausted")

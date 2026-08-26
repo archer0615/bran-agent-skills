@@ -102,6 +102,22 @@ class StateStore:
         except (OSError, ValueError, TypeError, json.JSONDecodeError):
             return "unknown"
 
+    def heartbeat(self, lock_id: str, *, expires_in_seconds: int = 3600) -> dict[str, Any]:
+        """Refresh an owned lock without allowing another process to extend it."""
+        if expires_in_seconds <= 0:
+            raise ValueError("expires_in_seconds must be positive")
+        try:
+            metadata = json.loads(self.lock_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise StateConflictError("lock is unavailable") from exc
+        if metadata.get("lock_id") != lock_id or metadata.get("pid") != os.getpid() or metadata.get("hostname") != socket.gethostname():
+            raise StateConflictError("lock is not owned by this process")
+        now = datetime.now(timezone.utc)
+        metadata["heartbeat_at"] = now.isoformat()
+        metadata["expires_at"] = (now + timedelta(seconds=expires_in_seconds)).isoformat()
+        self._atomic_write(self.lock_path, metadata)
+        return metadata
+
     def recover_lock(self, *, explicit: bool = False) -> dict[str, str]:
         status = self.lock_status()
         if status != "stale" or not explicit:

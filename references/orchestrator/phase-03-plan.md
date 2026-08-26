@@ -4,21 +4,20 @@
 
 Phase 03A completed the offline runtime safety foundation: centralized and validated state transitions, terminal-state enforcement, append-only transition events, persisted single-use human gates, lock metadata with explicit stale/unknown recovery, atomic state backups, corruption detection/recovery, repository revision checks, and persisted bounded retry/replan counters. Deterministic fake-provider tests remain the only execution path.
 
-Remaining Phase 03 work is provider-neutral operational UX and production-like integration described below; real providers remain out of scope until Phase 03B.
+The offline runtime safety foundation is implemented and covered by deterministic tests. Remaining work is limited to production-environment validation and explicitly configured external-provider operation; no provider is enabled by default.
 
 ## Phase 03B progress
 
-The first Phase 03B increment now persists bounded Goal, current Plan, Task, execution/review Run artifacts under `.orchestrator/`, exposes them through the `artifacts` CLI command, and keeps all writes atomic and path-confined. Real provider adapters remain pending provider selection and explicit integration requirements.
+Phase 03B now persists bounded Goal, current Plan, Task, execution/review Run artifacts under `.orchestrator/`, exposes them through the `artifacts` CLI command, validates artifact contracts at write time, and keeps all writes atomic and path-confined. Provider-neutral JSON HTTP Planner/Reviewer adapters and an explicit Codex CLI Executor adapter are available but remain disabled unless configured.
 
-外部 provider 尚未選定，因此 Phase 03 保持 adapter-neutral：先建立 provider configuration、secret redaction、timeouts、approval policy 與可替換 adapter；待 provider 決策後才接 API 或 Codex CLI。
+外部 provider 仍採明確設定才啟用的策略：provider configuration、secret redaction、timeouts、approval policy、JSON HTTP adapters 與 Codex CLI adapter 均已建立；正式 provider endpoint、model 與 credential policy 仍由部署環境決定。
 
 ## Planned
 
-- real provider adapters behind existing `Planner`／`Executor`／`Reviewer` protocols
-- persisted plan/task/run artifacts and human-readable status views
-- lock expiry policy and explicit stale-run recovery
-- retry backoff and richer failure classification
-- integration tests against provider fakes and repository fixtures
+- production endpoint compatibility tests using a controlled provider fixture
+- persisted plan/task/run artifact migration/versioning beyond schema `1.0`
+- retry backoff and richer failure classification for external service outages
+- multi-process integration tests for lock ownership and stale-run recovery
 
 ## Non-goals
 

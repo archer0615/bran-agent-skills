@@ -93,11 +93,12 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(FakePlanner().create_plan(goal), ensure_ascii=False))
         return 0
     try:
-        planner, executor, reviewer = build_providers(OrchestratorConfig.from_environment(), repository_root=root)
+        config = OrchestratorConfig.from_environment()
+        planner, executor, reviewer = build_providers(config, repository_root=root)
     except Exception as exc:
         print(json.dumps({"error": str(exc)}, ensure_ascii=False))
         return 1
-    result = LoopController(RepositoryAdapter(root), store, planner, executor, reviewer).run(goal, human_approved=args.approve_human_gate)
+    result = LoopController(RepositoryAdapter(root), store, planner, executor, reviewer, max_replans=config.max_plan_revisions, max_execution_retries=config.max_execution_retries, retry_base_seconds=config.retry_base_seconds, retry_max_seconds=config.retry_max_seconds).run(goal, human_approved=args.approve_human_gate)
     print(json.dumps({"state": result.state, "task_id": result.task_id, "human_reason": result.human_reason}, ensure_ascii=False))
     return 0 if result.state == "COMPLETED" else 1
 

@@ -28,6 +28,34 @@ class ConfigTests(unittest.TestCase):
         with self.assertRaises(ProviderError):
             build_providers(OrchestratorConfig(planner_provider="openai"))
 
+    def test_negative_budget_is_rejected(self):
+        old = os.environ.get("BRAN_MAX_PLAN_REVISIONS")
+        try:
+            os.environ["BRAN_MAX_PLAN_REVISIONS"] = "-1"
+            with self.assertRaises(ValueError):
+                OrchestratorConfig.from_environment()
+        finally:
+            if old is None:
+                os.environ.pop("BRAN_MAX_PLAN_REVISIONS", None)
+            else:
+                os.environ["BRAN_MAX_PLAN_REVISIONS"] = old
+
+    def test_retry_backoff_settings_are_loaded(self):
+        old_base = os.environ.get("BRAN_RETRY_BASE_SECONDS")
+        old_max = os.environ.get("BRAN_RETRY_MAX_SECONDS")
+        try:
+            os.environ["BRAN_RETRY_BASE_SECONDS"] = "1.5"
+            os.environ["BRAN_RETRY_MAX_SECONDS"] = "7"
+            config = OrchestratorConfig.from_environment()
+            self.assertEqual(config.retry_base_seconds, 1.5)
+            self.assertEqual(config.retry_max_seconds, 7.0)
+        finally:
+            for name, old in (("BRAN_RETRY_BASE_SECONDS", old_base), ("BRAN_RETRY_MAX_SECONDS", old_max)):
+                if old is None:
+                    os.environ.pop(name, None)
+                else:
+                    os.environ[name] = old
+
 
 if __name__ == "__main__":
     unittest.main()

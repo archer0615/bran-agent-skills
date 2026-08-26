@@ -29,6 +29,15 @@ class ControllerTests(unittest.TestCase):
         controller.max_replans = 0
         self.assertEqual(controller.run(goal()).state, "FAILED")
         directory.cleanup()
+
+    def test_retry_backoff_is_applied_between_attempts(self):
+        delays = []
+        directory = tempfile.TemporaryDirectory()
+        root = Path(directory.name)
+        controller = LoopController(RepositoryAdapter(root), StateStore(root / ".orchestrator" / "state.json"), FakePlanner(), FakeExecutor("failed"), FakeReviewer(), max_execution_retries=2, retry_base_seconds=1, retry_max_seconds=3, sleeper=delays.append)
+        self.assertEqual(controller.run(goal()).state, "FAILED")
+        self.assertEqual(delays, [1, 2])
+        directory.cleanup()
         directory, controller = self.run_controller(executor="blocked")
         self.assertEqual(controller.run(goal()).state, "BLOCKED")
         directory.cleanup()
