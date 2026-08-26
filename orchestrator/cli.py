@@ -18,10 +18,10 @@ from .verification import discover_commands
 
 
 def main(argv: list[str] | None = None) -> int:
-    if argv and argv[0] not in {"run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts", "validate", "doctor", "tasks", "runs", "recover-lock"}:
+    if argv and argv[0] not in {"run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "request-gate", "artifacts", "validate", "doctor", "tasks", "runs", "recover-lock"}:
         argv = ["run", *argv]
     parser = argparse.ArgumentParser(prog="bran-agent-orchestrate")
-    parser.add_argument("command", choices=["run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "artifacts", "validate", "doctor", "tasks", "runs", "recover-lock"], nargs="?", default="run")
+    parser.add_argument("command", choices=["run", "plan", "status", "resume", "abort", "gates", "approve", "reject", "request-gate", "artifacts", "validate", "doctor", "tasks", "runs", "recover-lock"], nargs="?", default="run")
     parser.add_argument("repository")
     parser.add_argument("goal", nargs="?")
     parser.add_argument("--approve-human-gate", action="store_true")
@@ -60,6 +60,13 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "validate":
         print(json.dumps({"commands": discover_commands(root)}, ensure_ascii=False))
+        return 0
+    if args.command == "request-gate":
+        if not args.gate_id or not args.reason:
+            parser.error("--gate-id and --reason are required")
+        snapshot = RepositoryAdapter(root).inspect()
+        gate = gates.create(goal_id="cli-goal", plan_id=None, task_id=args.gate_id, repository_revision=snapshot.revision or "unknown", scope=[], reason=args.reason)
+        print(json.dumps(gate, ensure_ascii=False))
         return 0
     if args.command == "doctor":
         checks = {"repository": root.is_dir(), "orchestrator_directory": (root / ".orchestrator").is_dir(), "verification_commands": discover_commands(root)}

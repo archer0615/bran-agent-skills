@@ -15,6 +15,7 @@
 - [Artifact contracts](artifact-contracts.md)：Goal、Plan、Task、Execution Result、Review Result 的 JSON contract。
 - [Safety and human gates](safety-and-human-gates.md)：Git policy、核准條件、失敗分類與證據規則。
 - [Phase 02 plan](phase-02-plan.md)：最小 local CLI prototype 的分階段實作順序。
+- [Operations guide](operations.md)：local CLI、Human Gate、recovery 與 persistence 操作方式。
 - [ADR 0001](adr/0001-orchestrator-boundary.md)：為何協調層不做成單一 Skill。
 
 ## Source of truth
