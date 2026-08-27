@@ -2,6 +2,7 @@ import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 import json
+import socket
 from pathlib import Path
 
 from orchestrator.state_store import StateConflictError, StateStore
@@ -32,6 +33,6 @@ class LockTests(unittest.TestCase):
             store = StateStore(Path(directory) / "state.json")
             store.lock_path.parent.mkdir(parents=True, exist_ok=True)
             old = (datetime.now(timezone.utc) - timedelta(seconds=10)).isoformat()
-            store.lock_path.write_text(json.dumps({"lock_id":"old","pid":999999,"hostname":"localhost","created_at":old,"heartbeat_at":old,"expires_at":old,"repository":"x","run_id":"r"}), encoding="utf-8")
+            store.lock_path.write_text(json.dumps({"lock_id":"old","pid":999999,"hostname":socket.gethostname(),"created_at":old,"heartbeat_at":old,"expires_at":old,"repository":"x","run_id":"r"}), encoding="utf-8")
             self.assertEqual(store.lock_status(), "stale")
             self.assertEqual(store.recover_lock(explicit=True)["action"], "recovered")
