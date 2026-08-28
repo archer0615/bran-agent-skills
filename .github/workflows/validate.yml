@@ -15,16 +15,25 @@ concurrency:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.12', '3.13']
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - name: Test orchestrator runtime
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: ${{ matrix.python }}
+      - name: Install package
+        run: python -m pip install .
       - name: Run orchestrator tests
         run: python -m unittest discover -s tests -v
+      - name: Verify installed CLI and packaged schemas
+        run: python -c "from importlib.resources import files; assert len(list(files('orchestrator').joinpath('schemas').iterdir())) >= 8; import orchestrator.cli; print('package smoke ok')"
       - name: Compile orchestrator
         run: python -m compileall -q orchestrator tests
       - name: Validate orchestrator schemas

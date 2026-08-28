@@ -22,6 +22,8 @@ cd /path/to/bran-agent-skills
 
 ## 使用
 
+進階維護與操作請參閱 [`CONTRIBUTING.md`](CONTRIBUTING.md)、[`references/operations.md`](references/operations.md) 與 [`references/versioning.md`](references/versioning.md)。
+
 ### Local Orchestrator prototype
 
 The provider-neutral local prototype is available through the Python module:

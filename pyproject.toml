@@ -14,3 +14,6 @@ bran-agent-orchestrate = "orchestrator.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["orchestrator*"]
+
+[tool.setuptools.package-data]
+orchestrator = ["schemas/*.json"]
