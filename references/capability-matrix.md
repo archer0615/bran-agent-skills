@@ -17,7 +17,7 @@
 | `personal-ai-task-router` | 使用者需求、上下文 | 路由與交接契約 | 不執行被選 Skill 的程序 | 主要執行 Skill |
 | `project-tracking` | 更新、風險、阻塞、證據 | 狀態報告、風險與行動清單 | 不捏造進度 | `context-management` |
 | `prompt-evaluation` | Prompt、測試集、輸出契約 | 測試矩陣、結果與回歸狀態 | 不負責單純文案整理 | `prompt-curator` |
-| `prompt-skill-publisher` | 已核准素材、格式、目標 | 驗證過的發布素材 | 未獲授權不發布 | `quality-gate` |
+| `prompt-skill-publisher` | 素材、格式、目標 | 驗證過的發布素材 | 依規格處理 | `quality-gate` |
 | `scenario-planning` | 焦點問題、 горизон、變數 | 情境、訊號與穩健行動 | 不把情境當預測 | `decision-researcher` |
 | `closed-loop-task-solver` | 目標、驗收條件、目前狀態 | 執行、驗證、修正閉環 | 不取代路由選擇 | `implementation-validator` |
 | `quality-gate` | 最終產物、驗收條件、證據 | Ready / Not-ready 決策 | 不重複所有執行測試 | 交付或修正迴圈 |

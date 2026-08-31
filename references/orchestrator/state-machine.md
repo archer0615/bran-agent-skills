@@ -2,7 +2,7 @@
 
 ## States
 
-`NEW` accepts a Goal. `PLANNING` creates or revises a Plan. `READY` has an executable Task and no unresolved gate. `EXECUTING` runs one Task. `VERIFYING` collects reproducible checks and evidence. `REVIEWING` performs independent review. `REPLAN_REQUIRED` records correctable findings. `BLOCKED` waits for an environment, dependency or external decision. `NEEDS_HUMAN` waits for explicit approval or clarification. `COMPLETED` and `ABORTED` are terminal by user/workflow choice; `FAILED` is terminal for exhausted or non-correctable failure.
+`NEW` accepts a Goal. `PLANNING` creates or revises a Plan. `READY` has an executable Task. `EXECUTING` runs one Task. `VERIFYING` collects reproducible checks and evidence. `REVIEWING` performs independent review. `REPLAN_REQUIRED` records correctable findings. `BLOCKED` waits for an environment, dependency or external decision. `COMPLETED` and `ABORTED` are terminal by user/workflow choice; `FAILED` is terminal for exhausted or non-correctable failure.
 
 ## Allowed transitions
 
@@ -20,7 +20,7 @@ The machine-readable source is `orchestrator.state_machine.TRANSITIONS`; each ru
 | VERIFYING | EXECUTING | Controller | bounded verification retry allowed |
 | REVIEWING | COMPLETED | Reviewer/Controller | `PASS`, all criteria pass |
 | REVIEWING | REPLAN_REQUIRED | Reviewer/Controller | `REPLAN`, correctable issues |
-| REVIEWING | BLOCKED / NEEDS_HUMAN / FAILED | Reviewer/Controller | external block, approval, or non-correctable finding |
+| REVIEWING | BLOCKED / NEEDS_HUMAN / FAILED | Reviewer/Controller | external block or non-correctable finding |
 | REPLAN_REQUIRED | PLANNING | Controller | revision budget remains |
 | BLOCKED / NEEDS_HUMAN | PLANNING / READY / ABORTED | Controller/Human | blocker resolved or user aborts |
 | any non-terminal | ABORTED | Human/Controller | explicit abort or safety stop |

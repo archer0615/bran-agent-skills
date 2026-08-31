@@ -34,8 +34,6 @@ Derive project rules from the repository's README, package/build configuration, 
 
 ## Safety
 
-- Do not commit secrets or modify `.env`.
-- Do not deploy, push, or change production data without explicit approval.
 ```
 
 Do not copy every shared skill or the global system prompt into each project.

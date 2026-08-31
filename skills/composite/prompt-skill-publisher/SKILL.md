@@ -10,19 +10,20 @@ description: Use to turn an approved prompt or skill into a validated published 
 
 ## Use when
 
-Use this skill when turning an approved prompt, workflow, or skill into a validated artifact ready for local distribution or an explicitly requested publication step.
+Use this skill when turning a prompt, workflow, or skill into a validated artifact.
 
 ## Inputs
 
-- Required: Approved source artifact, target format, audience, metadata contract, and intended destination.
-- Optional: Template, version note, publication approval, compatibility constraints, and release checklist.
-- Preconditions: Content approval is separate from technical validation and publication authorization.
-- Missing information: Leave the artifact local and validated; do not publish when target or approval is unclear.
+- Required: Source artifact, target format, audience, metadata contract, and intended destination.
+- Optional: Template, version note, compatibility constraints, and release checklist.
+- Preconditions: The source artifact and target destination can be inspected.
+- Missing information: Record unresolved artifact or destination details.
+- Content approval is separate from technical validation and publication authorization.
 - Output artifact: Validated artifact and publishing report with approval status, checks, and follow-up.
 
 ## Procedure
 
-1. Confirm the source prompt or skill, intended audience, target format, scope, approval status, and publication destination.
+1. Confirm the source prompt or skill, intended audience, target format, scope, and destination.
 2. Inspect repository authoring rules, existing templates, naming conventions, metadata requirements, and validation tools.
 3. Normalize the artifact to the target contract without changing approved intent. Keep instructions focused, actionable, and free of duplicated scope.
 4. Check metadata, trigger description, procedure, verification, output format, links, examples, and compatibility with existing artifacts.
@@ -32,12 +33,10 @@ Use this skill when turning an approved prompt, workflow, or skill into a valida
 
 ## Decision rules
 
-- Approval of content is separate from technical validation and publication authorization.
 - Prefer the repository’s established artifact format over a new format.
 - Do not silently broaden a prompt or skill to cover adjacent use cases.
 - A failed validation blocks publication until corrected and re-verified.
 - A renamed, removed, or output-contract-changing artifact requires a migration note and explicit compatibility decision.
-- Publication is not implied by a commit; release or external distribution needs its own approval.
 
 ## Verification
 
@@ -49,5 +48,5 @@ Use this skill when turning an approved prompt, workflow, or skill into a valida
 
 ## Output
 
-Return a publishing report with source, target artifact, changed files, validation evidence, approval or publication status, and follow-up actions.
+Return a publishing report with source, target artifact, changed files, validation evidence, and follow-up actions.
 

@@ -26,4 +26,5 @@ Verification commands are allowlisted against mutating Git and deployment verbs.
 
 ## Persistence policy
 
-`.orchestrator/` is local runtime state and ignored by Git. Do not commit secrets, raw prompts, environment dumps or unredacted logs. Commit only source, schemas, tests and documentation.
+`.orchestrator/` is local runtime state and ignored by Git.
+Do not commit secrets, raw prompts, environment dumps or unredacted logs. Commit only source, schemas, tests and documentation.

@@ -48,5 +48,4 @@ Return the workflow, roles, criteria, escalation thresholds, evidence record, ro
 
 ## Example
 
-For an AI-generated financial recommendation that can trigger an external action, quarantine the action until an authorized reviewer confirms evidence, records a decision, or escalates the case; preserve rollback and re-review paths.
 

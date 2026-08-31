@@ -60,5 +60,4 @@ Return the selected capability or ordered capability sequence, the routing reaso
 
 ## Example
 
-For a request to assess whether an AI workflow is ready for external use, route to `evidence-first-research` when current evidence is needed, then `human-review-workflow`, and finish with `quality-gate`. Keep `personal-ai-task-router` as the routing owner rather than duplicating those procedures.
 

@@ -15,8 +15,8 @@ Use this skill when initializing Codex guidance, project instructions, capabilit
 ## Inputs
 
 - Required: Project repository and existing instructions, configuration, and workflow files.
+- Preconditions: The project can be inspected.
 - Optional: Technology stack, desired Codex behavior, setup constraints, and validation commands.
-- Preconditions: The project can be inspected and no external publication is implicitly required.
 - Missing information: Derive commands from repository evidence and mark uncertain setup steps as conditional.
 - Output artifact: Scoped project guidance, bootstrap changes, validation results, and remaining setup actions.
 
@@ -36,7 +36,6 @@ Use this skill when initializing Codex guidance, project instructions, capabilit
 - Never include secrets, personal data, or machine-specific paths.
 - Do not install dependencies, publish, deploy, or change external systems unless explicitly requested.
 - Prefer a reversible, additive change; record any required manual migration or platform-specific limitation.
-- Treat missing project evidence as a conditional instruction, not permission to invent commands.
 
 ## Verification
 

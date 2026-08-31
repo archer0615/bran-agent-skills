@@ -27,3 +27,4 @@ Use this checklist before publishing a Skill library update.
 - Confirm the GitHub Actions validation workflow passes.
 - Create a release or tag only after review; do not imply a release from a commit alone.
 - `prepare-release.ps1` does not create commits, tags, releases, or remote changes; those remain explicit actions.
+

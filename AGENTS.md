@@ -21,11 +21,8 @@ Follow: `Input → Route → Inspect → Execute → Verify → Correct if requi
 
 ## Safety
 
-- Never commit secrets, tokens, passwords, certificates, personal data, or machine-specific paths.
 - Do not overwrite unrelated user changes or delete unrelated files.
-- Do not modify production data or perform destructive database operations.
 - Do not commit, push, merge, deploy, release, or rewrite history unless explicitly requested.
-- Confirm before irreversible changes or changes affecting security, data compatibility, or public APIs.
 
 ## Validation and output
 
